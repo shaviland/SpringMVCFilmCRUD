@@ -24,35 +24,47 @@ public class FilmController {
 		this.filmDAO = filmDAO;
 	}
 
-	@RequestMapping(path = "GetFilmByID.do", params = "FilmID", method = RequestMethod.GET)
-	public ModelAndView getFilmByID() {
-
-		Film film = new Film();
-		ModelAndView mv = new ModelAndView("WEB-INF/getFilmByID.jsp", "film", film);
-		return mv;
+	@RequestMapping(path = "home.do", method = RequestMethod.GET)
+	public String goHome() {
+		return "index.html";
 	}
 
-	@RequestMapping(path = "GetFilmByID.do", params = "FilmID", method = RequestMethod.POST)
-	public ModelAndView doGetFilmByID(@RequestParam("FilmID") String n, Errors errors) {
+	@RequestMapping(path = "getFilmByID.do", params = "filmID", method = RequestMethod.GET)
+	public ModelAndView getFilmByID(int filmID) {
 
+		System.out.println(filmID);
+		Film film = filmDAO.findFilmById(filmID);
 		ModelAndView mv = new ModelAndView();
-		int filmID = Integer.parseInt(n);
-		Film matchingFilm = filmDAO.findFilmById(filmID);
-
-		if(matchingFilm == null) {
-			errors.rejectValue("FilmID", "error.FilmID", "Film ID does not exist");
-		} 
-		
-		if (errors.getErrorCount() != 0) {
-			mv.setViewName("WEB-INF/index.html");
-			return mv;
-		}
-		
+		mv.addObject("film", film);
 		mv.setViewName("WEB-INF/results.jsp");
-		mv.addObject("film", filmDAO.findFilmById(filmID));
-
+		System.out.println("**************************************");
+		System.out.println(film);
+		System.out.println("**************************************");
 		return mv;
-
 	}
+
+//	@RequestMapping(path = "filmByIDResults.do", params = "FilmID", method = RequestMethod.POST)
+//	public ModelAndView doGetFilmByID(@RequestParam("FilmID") String n, Errors errors) {
+//
+//		ModelAndView mv = new ModelAndView();
+//		int filmID = Integer.parseInt(n);
+//		Film matchingFilm = filmDAO.findFilmById(filmID);
+//
+//		if (matchingFilm == null) {
+//			errors.rejectValue("FilmID", "error.FilmID", "Film ID does not exist");
+//		}
+//
+//		if (errors.getErrorCount() != 0) {
+//			mv.setViewName("index.html");
+//			return mv;
+//		}
+//
+//		mv.setViewName("WEB-INF/results.jsp");
+//		mv.addObject("film", filmDAO.findFilmById(filmID));
+//		
+//
+//		return mv;
+//
+//	}
 
 }

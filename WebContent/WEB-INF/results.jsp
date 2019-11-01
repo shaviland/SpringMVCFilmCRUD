@@ -30,7 +30,7 @@
 		</tr>
 		<tr>
 			<td>Special Features:</td>
-			<td>${film.speacialFeatures}</td>
+			<td>${film.specialFeatures}</td>
 		</tr>
 	</table>
 </body>

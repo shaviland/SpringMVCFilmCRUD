@@ -11,12 +11,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.stereotype.Component;
+
 import com.skilldistillery.film.entities.Actor;
 import com.skilldistillery.film.entities.Film;
 
+@Component
 public class FilmDAOImpl implements FilmDAO {
 
-	private static final String URL = "jdbc:mysql://localhost:3306/sdvid?useSSL=false";
+	private static final String URL = "jdbc:mysql://localhost:3306/sdvid?useSSL=false&serverTimezone=UTC&useLegacyDatetimeCode=false";
 	private static String user = "student";
 	private static String password = "student";
 
@@ -56,6 +59,7 @@ public class FilmDAOImpl implements FilmDAO {
 				film.setActors(findActorsByFilmId(film.getId()));
 				film.setCategories(findCategoriesByFilmId(film.getId()));
 				film.setCopies(findCopiesByFilmId(film.getId()));
+				System.out.println(film);
 			}
 
 			filmResults.close();
