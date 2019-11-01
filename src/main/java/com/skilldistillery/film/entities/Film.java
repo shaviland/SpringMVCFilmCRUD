@@ -19,7 +19,7 @@ public class Film {
 	private double replacementCost;
 	private String rating;
 	private String specialFeatures;
-//	private List<Actor> actors;
+	private List<Actor> actors;
 	private List<String> categories;
 	private Map<Integer, String> copies;
 
@@ -58,18 +58,18 @@ public class Film {
 
 //	M E T H O D S 
 
-//	@Override
-//	public String toString() {
-//		return "ID: " + id + " " + title + " (" + language + ") released " + releaseYear + ", rated " + rating + " : "
-//				+ description + "\nCast: " + actors + "\nCategories: " + categories;
-//	}
-//
-//	public String toStringFull() {
-//		return "ID: " + id + " " + title + " (" + language + ") Released " + releaseYear + ", Rated " + rating + " : "
-//				+ description + "\nLength: " + length + " min, Replacement Cost: $" + replacementCost
-//				+ ", Special Features: " + specialFeatures + "\nCast: " + actors + "\nCategories: " + categories
-//				+ "\nCopies: " + copies;
-//	}
+	@Override
+	public String toString() {
+		return "ID: " + id + " " + title + " (" + language + ") released " + releaseYear + ", rated " + rating + " : "
+				+ description + "\nCast: " + actors + "\nCategories: " + categories;
+	}
+
+	public String toStringFull() {
+		return "ID: " + id + " " + title + " (" + language + ") Released " + releaseYear + ", Rated " + rating + " : "
+				+ description + "\nLength: " + length + " min, Replacement Cost: $" + replacementCost
+				+ ", Special Features: " + specialFeatures + "\nCast: " + actors + "\nCategories: " + categories
+				+ "\nCopies: " + copies;
+	}
 
 	public int getId() {
 		return id;
@@ -167,13 +167,13 @@ public class Film {
 		this.specialFeatures = specialFeatures;
 	}
 
-//	public List<Actor> getActors() {
-//		return actors;
-//	}
-//
-//	public void setActors(List<Actor> actors) {
-//		this.actors = actors;
-//	}
+	public List<Actor> getActors() {
+		return actors;
+	}
+
+	public void setActors(List<Actor> actors) {
+		this.actors = actors;
+	}
 
 	public List<String> getCategories() {
 		return categories;

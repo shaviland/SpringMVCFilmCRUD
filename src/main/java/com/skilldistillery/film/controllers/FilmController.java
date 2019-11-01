@@ -11,33 +11,35 @@ import com.skilldistillery.film.dao.FilmDAO;
 
 @Controller
 public class FilmController {
-		@Autowired
-		private FilmDAO filmDAO;
-		
-		public FilmDAO getFilmDAO() {
-			return filmDAO;
-		}
+	@Autowired
+	private FilmDAO filmDAO;
 
-		public void setFilmDAO(FilmDAO filmDAO) {
-			this.filmDAO = filmDAO;
-		}
+	public FilmDAO getFilmDAO() {
+		return filmDAO;
+	}
 
-		// TODO : Implement a request handler for:
-		// path "GetStateData.do"
-		// params "name"
-		// method GET
-		// return : ModelAndView
-		// view : "WEB-INF/result.jsp"
-		// object : "state", StateDAO.getStateByName
-//		@RequestMapping(path = "GetStateData.do", params = "name", method = RequestMethod.GET)
-//		public ModelAndView getStateByName(@RequestParam("name") String n) {
-//
-//			ModelAndView mv = new ModelAndView();
-//			mv.setViewName("WEB-INF/result.jsp");
-//			mv.addObject("state", stateDAO.getStateByName(n));
-//			return mv;
-//		}
-//
+	public void setFilmDAO(FilmDAO filmDAO) {
+		this.filmDAO = filmDAO;
+	}
+
+	// TODO : Implement a request handler for:
+	// path "GetStateData.do"
+	// params "name"
+	// method GET
+	// return : ModelAndView
+	// view : "WEB-INF/result.jsp"
+	// object : "state", StateDAO.getStateByName
+	@RequestMapping(path = "GetFilmByID.do", params = "FilmID", method = RequestMethod.GET)
+	public ModelAndView getFilmByID(@RequestParam("FilmID") String n) {
+
+		int filmID = Integer.parseInt(n);
+
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("WEB-INF/result.jsp");
+		mv.addObject("film", filmDAO.findFilmById(filmID));
+		return mv;
+	}
+
 //		// TODO : Implement a request handler for:
 //		// path "GetStateData.do"
 //		// params "abbr"
