@@ -1,0 +1,37 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Film Query Results</title>
+</head>
+<body>
+	<h1>${film.title}</h1>
+	<h3>${film.description}</h3>
+	<table>
+		<tr>
+			<td>Release Year: </td>
+			<td>${film.releaseYear}</td>
+		</tr>
+		<tr>
+			<td>Language: </td>
+			<td>${film.language}</td>
+		</tr>
+		<tr>
+			<td>Length:</td>
+			<td>${film.length}</td>
+		</tr>
+		<tr>
+			<td>Rating:</td>
+			<td>${film.rating}</td>
+		</tr>
+		<tr>
+			<td>Special Features:</td>
+			<td>${film.speacialFeatures}</td>
+		</tr>
+	</table>
+</body>
+</html>
