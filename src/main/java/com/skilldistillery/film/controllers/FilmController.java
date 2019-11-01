@@ -32,14 +32,10 @@ public class FilmController {
 	@RequestMapping(path = "getFilmByID.do", params = "filmID", method = RequestMethod.GET)
 	public ModelAndView getFilmByID(int filmID) {
 
-		System.out.println(filmID);
 		Film film = filmDAO.findFilmById(filmID);
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("film", film);
 		mv.setViewName("WEB-INF/results.jsp");
-		System.out.println("**************************************");
-		System.out.println(film);
-		System.out.println("**************************************");
 		return mv;
 	}
 

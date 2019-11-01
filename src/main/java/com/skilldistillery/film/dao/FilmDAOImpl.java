@@ -19,7 +19,7 @@ import com.skilldistillery.film.entities.Film;
 @Component
 public class FilmDAOImpl implements FilmDAO {
 
-	private static final String URL = "jdbc:mysql://localhost:3306/sdvid?useSSL=false&serverTimezone=UTC&useLegacyDatetimeCode=false";
+	private static final String URL = "jdbc:mysql://localhost:3306/sdvid?useSSL=false&useLegacyDatetimeCode=false&serverTimezone=US/Mountain";
 	private static String user = "student";
 	private static String password = "student";
 
@@ -35,8 +35,8 @@ public class FilmDAOImpl implements FilmDAO {
 	public Film findFilmById(int filmId) {
 		Film film = null;
 		String sql = "SELECT * FROM film " + "JOIN language ON film.language_id = language.id "
-				+ "LEFT JOIN film_actor ON film.id = film_actor.film_id " + "LEFT JOIN actor ON film_actor.actor_id = actor.id "
-				+ "WHERE film.id = ?";
+				+ "LEFT JOIN film_actor ON film.id = film_actor.film_id "
+				+ "LEFT JOIN actor ON film_actor.actor_id = actor.id " + "WHERE film.id = ?";
 
 		try (Connection conn = DriverManager.getConnection(URL, user, password);
 				PreparedStatement stmt = setUp(filmId, conn, sql);
@@ -59,7 +59,6 @@ public class FilmDAOImpl implements FilmDAO {
 				film.setActors(findActorsByFilmId(film.getId()));
 				film.setCategories(findCategoriesByFilmId(film.getId()));
 				film.setCopies(findCopiesByFilmId(film.getId()));
-				System.out.println(film);
 			}
 
 			filmResults.close();
@@ -275,10 +274,9 @@ public class FilmDAOImpl implements FilmDAO {
 		}
 	}
 
-	
 	@Override
 	public Film deleteFilmById(int filmId) {
-		
+
 		Film film = findFilmById(filmId);
 		Connection conn = null;
 		try {
@@ -317,5 +315,4 @@ public class FilmDAOImpl implements FilmDAO {
 		return stmt;
 	}
 
-	
 }
