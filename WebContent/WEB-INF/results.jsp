@@ -33,5 +33,10 @@
 			<td>${film.specialFeatures}</td>
 		</tr>
 	</table>
+	
+		<form action="deleteFilm.do" method="GET">
+
+		<input type="submit" value="DELETE FILM" />
+	</form>
 </body>
 </html>

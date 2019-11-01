@@ -35,32 +35,20 @@ public class FilmController {
 		Film film = filmDAO.findFilmById(filmID);
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("film", film);
+		mv.addObject("film.id", film.getId());
 		mv.setViewName("WEB-INF/results.jsp");
 		return mv;
 	}
 
-//	@RequestMapping(path = "filmByIDResults.do", params = "FilmID", method = RequestMethod.POST)
-//	public ModelAndView doGetFilmByID(@RequestParam("FilmID") String n, Errors errors) {
-//
-//		ModelAndView mv = new ModelAndView();
-//		int filmID = Integer.parseInt(n);
-//		Film matchingFilm = filmDAO.findFilmById(filmID);
-//
-//		if (matchingFilm == null) {
-//			errors.rejectValue("FilmID", "error.FilmID", "Film ID does not exist");
-//		}
-//
-//		if (errors.getErrorCount() != 0) {
-//			mv.setViewName("index.html");
-//			return mv;
-//		}
-//
-//		mv.setViewName("WEB-INF/results.jsp");
-//		mv.addObject("film", filmDAO.findFilmById(filmID));
-//		
-//
-//		return mv;
-//
-//	}
+	@RequestMapping(path = "deleteFilm.do", params = "film.id", method = RequestMethod.GET)
+	public ModelAndView deleteFilm(@RequestParam("film.id") int filmID) {
+		
+		
+		ModelAndView mv = new ModelAndView();
+		filmDAO.deleteFilmById(filmID);
+		mv.setViewName("WEB-INF/deleted.jsp");
+		return mv;
+	}
+
 
 }
