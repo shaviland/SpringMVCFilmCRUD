@@ -13,11 +13,11 @@
 	<h3>${film.description}</h3>
 	<table>
 		<tr>
-			<td>Release Year: </td>
+			<td>Release Year:</td>
 			<td>${film.releaseYear}</td>
 		</tr>
 		<tr>
-			<td>Language: </td>
+			<td>Language:</td>
 			<td>${film.language}</td>
 		</tr>
 		<tr>
@@ -33,9 +33,9 @@
 			<td>${film.specialFeatures}</td>
 		</tr>
 	</table>
-	
-		<form action="deleteFilm.do" method="GET">
-		<input type="number" name="filmID" value="${film.id}"/>
+
+	<form action="deleteFilm.do" method="GET">
+		<input type="number" name="filmID" value="${film.id}" /> 
 		<input type="submit" value="DELETE FILM" />
 	</form>
 </body>
