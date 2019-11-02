@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.skilldistillery.film.dao.FilmDAO;
 import com.skilldistillery.film.entities.Film;
@@ -89,9 +90,10 @@ public class FilmController {
 		mv.setViewName("WEB-INF/results.jsp");
 		return mv;
 	}
+
 	@RequestMapping(path = "findFilmByKeyword.do", params = "filmKey", method = RequestMethod.GET)
 	public ModelAndView findFilmByKeyword(String filmKey) {
-		
+
 		System.out.println(filmKey);
 		List<Film> films = filmDAO.findFilmByKeyword(filmKey);
 		ModelAndView mv = new ModelAndView();
@@ -105,11 +107,12 @@ public class FilmController {
 		return mv;
 	}
 
-	@RequestMapping(path = "goToUpdateFilm.do", params = "filmID", params = "film", method = RequestMethod.GET)
-	public ModelAndView goToUpdateFilm(Film film, int filmID) {
+	@RequestMapping(path = "goToUpdateFilm.do", params = "filmID", method = RequestMethod.GET)
+	public ModelAndView goToUpdateFilm(@Valid Film film, int filmID) {
 		ModelAndView mv = new ModelAndView();
+		Film oldFilm = filmDAO.findFilmById(filmID);
 		mv.addObject("filmID", filmID);
-		mv.addObject("film", film);
+		mv.addObject("oldFilm", oldFilm);
 		mv.setViewName("WEB-INF/update.jsp");
 		return mv;
 	}
@@ -117,13 +120,13 @@ public class FilmController {
 	@RequestMapping(path = "updateFilm.do", params = "filmID", method = RequestMethod.POST)
 	public ModelAndView updateFilm(@Valid Film film, int filmID) {
 		ModelAndView mv = new ModelAndView();
-		
+
 		Film updatedFilm = filmDAO.updateFilm(filmID, film);
 		if (film.equals(updatedFilm)) {
 			mv.setViewName("WEB-INF/not-updated.jsp");
-		}else {
-		mv.addObject("film", updatedFilm);
-		mv.setViewName("WEB-INF/results.jsp");
+		} else {
+			mv.addObject("film", updatedFilm);
+			mv.setViewName("WEB-INF/results.jsp");
 		}
 		return mv;
 	}
