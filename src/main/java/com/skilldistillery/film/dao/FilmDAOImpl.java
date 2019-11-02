@@ -276,12 +276,10 @@ public class FilmDAOImpl implements FilmDAO {
 
 	@Override
 	public boolean deleteFilmById(int filmId) {
-
+		boolean filmDeleted = false;
 		Film film = findFilmById(filmId);
 		Connection conn = null;
-		if(film == null) {
-			return false;
-		}
+		
 		try {
 			conn = DriverManager.getConnection(URL, user, password);
 			conn.setAutoCommit(false); // START TRANSACTION
@@ -291,9 +289,7 @@ public class FilmDAOImpl implements FilmDAO {
 			int updateCount = stmt.executeUpdate();
 			System.out.println("Deleted (" + updateCount + ") film:" + film.getTitle());
 			conn.commit(); // COMMIT TRANSACTION
-			if(updateCount == 0) {
-				return false;
-			}
+
 		} catch (SQLException sqle) {
 			sqle.printStackTrace();
 			if (conn != null) {
@@ -303,9 +299,18 @@ public class FilmDAOImpl implements FilmDAO {
 					System.err.println("Error trying to rollback");
 				}
 			}
-			return false;
+			return filmDeleted;
 		}
-		return true;
+		
+			Film findFilm = findFilmById(filmId);
+			if(findFilm == null) {
+				filmDeleted = false;
+			}else {
+				filmDeleted = true;
+			}
+			
+		
+		return filmDeleted;
 	}
 
 	public PreparedStatement setUp(int id, Connection conn, String sql) throws SQLException {
