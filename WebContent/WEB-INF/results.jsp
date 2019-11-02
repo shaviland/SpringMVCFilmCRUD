@@ -22,10 +22,6 @@
 			<td>${film.releaseYear}</td>
 		</tr>
 		<tr>
-			<td>Release Year:</td>
-			<td>${film.releaseYear}</td>
-		</tr>
-		<tr>
 			<td>Language:</td>
 			<td>${film.language}</td>
 		</tr>
