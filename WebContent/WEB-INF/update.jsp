@@ -50,7 +50,8 @@
 		<form:input path="specialFeatures" />
 		<form:errors path="specialFeatures" />
 		<br />
-		<input type="submit" value="Create Film" />
+		<input type="submit" value="Update Film" />
+		<input type="hidden" name="filmID" value="${filmID}" />
 	</form:form>
 </body>
 </html>
