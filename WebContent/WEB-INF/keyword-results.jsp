@@ -9,9 +9,21 @@
 <title>Film Query Results</title>
 </head>
 <body>
-	<h6>${films}</h6>
 
+	<c:forEach items="${films}" var="film">
+		<table>
+			<tr>
+				<td>Title: ${film.title}</td>
+				<td>ID: ${film.id}</td>
+			</tr>
+		</table>
 
+	</c:forEach>
+	<form action="getFilmByID.do" method="GET">
+            <p>Film Details by ID</p>
+            <input type="input" name="filmID" placeholder="Enter film ID"/> 
+            <input type="submit" value="Search" />
+        </form>
 	<form action="index.html" method="GET">
 		<input type="submit" value="Return to Home Page" />
 	</form>

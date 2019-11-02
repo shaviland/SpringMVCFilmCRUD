@@ -11,7 +11,7 @@
 <body>
 	<form:form action="updateFilm.do" method="POST" modelAttribute="film">
 		<form:label path="title">Title:</form:label>
-		<form:input path="title" />
+		<form:input path="title" default = "${film.title}" placeholder="${film.title}" value='${film.title}'/>
 		<form:errors path="title" />
 		<br />
 		<form:label path="description">Description:</form:label>

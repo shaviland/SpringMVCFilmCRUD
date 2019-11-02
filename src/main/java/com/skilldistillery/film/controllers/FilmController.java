@@ -105,10 +105,11 @@ public class FilmController {
 		return mv;
 	}
 
-	@RequestMapping(path = "goToUpdateFilm.do", params = "filmID", method = RequestMethod.GET)
-	public ModelAndView goToUpdateFilm(@Valid Film film, int filmID) {
+	@RequestMapping(path = "goToUpdateFilm.do", params = "filmID", params = "film", method = RequestMethod.GET)
+	public ModelAndView goToUpdateFilm(Film film, int filmID) {
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("filmID", filmID);
+		mv.addObject("film", film);
 		mv.setViewName("WEB-INF/update.jsp");
 		return mv;
 	}
