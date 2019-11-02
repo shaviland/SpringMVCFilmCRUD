@@ -117,9 +117,14 @@ public class FilmController {
 	@RequestMapping(path = "updateFilm.do", params = "filmID", method = RequestMethod.POST)
 	public ModelAndView updateFilm(@Valid Film film, int filmID) {
 		ModelAndView mv = new ModelAndView();
+		
 		Film updatedFilm = filmDAO.updateFilm(filmID, film);
+		if (film.equals(updatedFilm)) {
+			mv.setViewName("WEB-INF/not-updated.jsp");
+		}else {
 		mv.addObject("film", updatedFilm);
 		mv.setViewName("WEB-INF/results.jsp");
+		}
 		return mv;
 	}
 

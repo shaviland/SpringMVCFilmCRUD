@@ -34,7 +34,15 @@
 		<form:errors path="languageId" />
 		<br />
 		<form:label path="rentalDuration">Rental Duration:</form:label>
-		<form:input path="rentalDuration" />
+		<form:select path="rentalDuration">
+			<option value="1">1 Day</option>
+			<option value="2">2 Days</option>
+			<option value="3">3 Days</option>
+			<option value="4">4 Days</option>
+			<option value="5">5 Days</option>
+			<option value="6">6 Days</option>
+			<option value="7">7 Days</option>
+		</form:select>
 		<form:errors path="rentalDuration" />
 		<br />
 		<form:label path="rentalRate">Rental Rate:</form:label>
@@ -61,14 +69,13 @@
 		<form:label path="specialFeatures">Special Features:</form:label>
 		<div>
 			<input type="checkbox" name="specialFeatures" value="Trailers">Trailers<br>
-			<input type="checkbox" name="specialFeatures" value="Commentaries">Commentaries<br> 
-			<input type="checkbox" name="specialFeatures"
-				value="Deleted Scenes">Deleted Scenes<br> 
-				<inputtype="checkbox" name="specialFeatures" value="Behind the Scenes">Behind the Scenes<br>
+			<input type="checkbox" name="specialFeatures" value="Commentaries">Commentaries<br>
+			<input type="checkbox" name="specialFeatures" value="Deleted Scenes">DeletedScenes<br> 
+			<input type="checkbox" name="specialFeatures" value="Behind the Scenes">Behind the Scenes<br>
 		</div>
-
 		<form:errors path="specialFeatures" />
 		<br />
+		
 		<input type="submit" value="Create Film" />
 	</form:form>
 </body>

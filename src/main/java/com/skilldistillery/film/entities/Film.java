@@ -62,22 +62,20 @@ public class Film {
 
 //	M E T H O D S 
 
-	@Override
-	public String toString() {
-		return "ID: " + id + " " + title + " (" + language + ") released " + releaseYear + ", rated " + rating + " : "
-				+ description + "\nCast: " + actors + "\nCategories: " + categories;
-	}
-
-	public String toStringFull() {
-		return "ID: " + id + " " + title + " (" + language + ") Released " + releaseYear + ", Rated " + rating + " : "
-				+ description + "\nLength: " + length + " min, Replacement Cost: $" + replacementCost
-				+ ", Special Features: " + specialFeatures + "\nCast: " + actors + "\nCategories: " + categories
-				+ "\nCopies: " + copies;
-	}
+	
 
 	public int getId() {
 		return id;
 	}
+
+	@Override
+	public String toString() {
+		return String.format(
+				"Film ID: %s \nTitle: %s \nDescription: %s \nRelease Year: %s \nLength: %s \nRating: %s "
+						+ "\nSpecial Features: %s \nCategory: %s \nLanguage: %s  \nActors: %s",
+				id, title, description, releaseYear, length, rating, specialFeatures, categories, language, actors);
+	}
+
 
 	public void setId(int id) {
 		this.id = id;
@@ -265,4 +263,5 @@ public class Film {
 		return true;
 	}
 
+	
 }
