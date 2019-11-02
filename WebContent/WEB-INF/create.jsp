@@ -9,7 +9,7 @@
 <title>Create Film</title>
 </head>
 <body>
-	<form:form action="createFilm.do" method="POST" modelAttribute="user">
+	<form:form action="createFilm.do" method="POST">
 		<form:label path="title">Title:</form:label>
 		<form:input path="title" />
 		<form:errors path="title" />

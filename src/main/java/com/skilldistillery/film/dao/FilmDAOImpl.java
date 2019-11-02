@@ -19,7 +19,7 @@ import com.skilldistillery.film.entities.Film;
 @Component
 public class FilmDAOImpl implements FilmDAO {
 
-	private static final String URL = "jdbc:mysql://localhost:3306/sdvid?useSSL=false&useLegacyDatetimeCode=false&serverTimezone=US/Mountain";
+	private static final String URL = "jdbc:mysql://localhost:3306/sdvid?useSSL=false&serverTimezone=UTC&useLegacyDatetimeCode=false";
 	private static String user = "student";
 	private static String password = "student";
 
