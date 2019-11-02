@@ -90,18 +90,18 @@ public class FilmController {
 		return mv;
 	}
 	@RequestMapping(path = "findFilmByKeyword.do", params = "filmKey", method = RequestMethod.GET)
-	public ModelAndView findFilmByKeyword(String keyWord) {
+	public ModelAndView findFilmByKeyword(String filmKey) {
 		
-		System.out.println(keyWord);
-		List<Film> films = filmDAO.findFilmByKeyword(keyWord);
+		System.out.println(filmKey);
+		List<Film> films = filmDAO.findFilmByKeyword(filmKey);
 		ModelAndView mv = new ModelAndView();
-		if (films == null) {
-			mv.setViewName("notFound.do");
+		if (films.size() == 0) {
+			mv.setViewName("WEB-INF/not-found.jsp");
 			return mv;
 		}
 		System.out.println(films);
 		mv.addObject("films", films);
-		mv.setViewName("WEB-INF/results.jsp");
+		mv.setViewName("WEB-INF/keyword-results.jsp");
 		return mv;
 	}
 
