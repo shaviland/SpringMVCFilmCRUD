@@ -23,14 +23,14 @@
 		<form:errors path="releaseYear" />
 		<br />
 		<form:label path="languageId">Language:</form:label>
-		<select>
+		<form:select path="languageId">
 			<option value="1">English</option>
 			<option value="2">Italian</option>
 			<option value="3">Japanese</option>
 			<option value="4">Mandarin</option>
 			<option value="5">French</option>
 			<option value="6">German</option>
-		</select>
+		</form:select>
 		<form:errors path="languageId" />
 		<br />
 		<form:label path="rentalDuration">Rental Duration:</form:label>
