@@ -17,39 +17,39 @@
 		<form:label path="description">Description:</form:label>
 		<form:input path="description" />
 		<form:errors path="description" />
-		<br>
+		<br />
 		<form:label path="releaseYear">Release Year:</form:label>
 		<form:input path="releaseYear" />
 		<form:errors path="releaseYear" />
-		<br>
+		<br />
 		<form:label path="languageId">Language ID:</form:label>
 		<form:input path="languageId" />
 		<form:errors path="languageId" />
-		<br>
+		<br />
 		<form:label path="rentalDuration">Rental Duration:</form:label>
 		<form:input path="rentalDuration" />
 		<form:errors path="rentalDuration" />
-		<br>
+		<br />
 		<form:label path="rentalRate">Rental Rate:</form:label>
 		<form:input path="rentalRate" />
 		<form:errors path="rentalRate" />
-		<br>
+		<br />
 		<form:label path="length">Length:</form:label>
 		<form:input path="length" />
 		<form:errors path="length" />
-		<br>
+		<br />
 		<form:label path="replacementCost">Replacement Cost:</form:label>
 		<form:input path="replacementCost" />
 		<form:errors path="replacementCost" />
-		<br>
+		<br />
 		<form:label path="rating">Rating:</form:label>
 		<form:input path="rating" />
 		<form:errors path="rating" />
-		<br>
+		<br />
 		<form:label path="specialFeatures">Special Features:</form:label>
 		<form:input path="specialFeatures" />
 		<form:errors path="specialFeatures" />
-		<br>
+		<br />
 		<input type="submit" value="Create Film" />
 	</form:form>
 </body>
