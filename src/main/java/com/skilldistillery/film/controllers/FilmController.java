@@ -39,11 +39,11 @@ public class FilmController {
 		return mv;
 	}
 
-	@RequestMapping(path = "deleteFilm.do", params = "film", method = RequestMethod.GET)
-	public ModelAndView deleteFilm(@RequestParam("film") Film film) {
+	@RequestMapping(path = "deleteFilm.do", params = "filmID", method = RequestMethod.GET)
+	public ModelAndView deleteFilm(int filmID) {
 
 		ModelAndView mv = new ModelAndView();
-		filmDAO.deleteFilmById(film.getId());
+		filmDAO.deleteFilmById(filmID);
 		mv.setViewName("WEB-INF/deleted.jsp");
 		return mv;
 	}
