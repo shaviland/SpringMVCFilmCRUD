@@ -61,11 +61,10 @@
 		<form:label path="specialFeatures">Special Features:</form:label>
 		<div>
 			<input type="checkbox" name="specialFeatures" value="Trailers">Trailers<br>
-			<input type="checkbox" name="specialFeatures" value="Commentaries">
-			Commentaries<br> <input type="checkbox" name="specialFeatures"
-				value="Deleted Scenes">Deleted Scenes<br> <input
-				type="checkbox" name="specialFeatures" value="Behind the Scenes">
-			Behind the Scenes<br>
+			<input type="checkbox" name="specialFeatures" value="Commentaries">Commentaries<br> 
+			<input type="checkbox" name="specialFeatures"
+				value="Deleted Scenes">Deleted Scenes<br> 
+				<inputtype="checkbox" name="specialFeatures" value="Behind the Scenes">Behind the Scenes<br>
 		</div>
 
 		<form:errors path="specialFeatures" />

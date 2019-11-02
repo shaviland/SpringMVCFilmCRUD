@@ -3,6 +3,7 @@ package com.skilldistillery.film.entities;
 import java.util.List;
 import java.util.Map;
 
+import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
 
 public class Film {
@@ -15,6 +16,7 @@ public class Film {
 	private Integer releaseYear;
 	private int languageId;
 	private String language;
+	@Max(7)
 	private int rentalDuration;
 	private double rentalRate;
 	private int length;
