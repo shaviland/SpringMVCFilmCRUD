@@ -50,8 +50,11 @@ public class FilmController {
 	public ModelAndView deleteFilm(int filmID) {
 
 		ModelAndView mv = new ModelAndView();
-		filmDAO.deleteFilmById(filmID);
+		if(filmDAO.deleteFilmById(filmID)) {
 		mv.setViewName("WEB-INF/deleted.jsp");
+		} else {
+		mv.setViewName("WEB-INF/notDeleted.jsp");
+		}
 		return mv;
 	}
 

@@ -275,7 +275,7 @@ public class FilmDAOImpl implements FilmDAO {
 	}
 
 	@Override
-	public Film deleteFilmById(int filmId) {
+	public boolean deleteFilmById(int filmId) {
 
 		Film film = findFilmById(filmId);
 		Connection conn = null;
@@ -288,7 +288,7 @@ public class FilmDAOImpl implements FilmDAO {
 			int updateCount = stmt.executeUpdate();
 			System.out.println("Deleted (" + updateCount + ") film:" + film.getTitle());
 			conn.commit(); // COMMIT TRANSACTION
-			return film;
+			return true;
 		} catch (SQLException sqle) {
 			sqle.printStackTrace();
 			if (conn != null) {
@@ -298,7 +298,7 @@ public class FilmDAOImpl implements FilmDAO {
 					System.err.println("Error trying to rollback");
 				}
 			}
-			return film;
+			return false;
 		}
 	}
 
