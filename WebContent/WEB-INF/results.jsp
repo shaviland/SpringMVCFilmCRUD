@@ -11,7 +11,16 @@
 <body>
 	<h1>${film.title}</h1>
 	<h3>${film.description}</h3>
+	
 	<table>
+		<tr>
+			<td>Film ID:</td>
+			<td>${film.id}</td>
+		</tr>
+		<tr>
+			<td>Release Year:</td>
+			<td>${film.releaseYear}</td>
+		</tr>
 		<tr>
 			<td>Release Year:</td>
 			<td>${film.releaseYear}</td>
