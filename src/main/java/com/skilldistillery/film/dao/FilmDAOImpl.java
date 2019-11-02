@@ -243,13 +243,13 @@ public class FilmDAOImpl implements FilmDAO {
 					System.out.println("New film ID: " + newFilmId);
 					film.setId(newFilmId);
 //					if (findActorsByFilmId(newFilmId) != null && findActorsByFilmId(newFilmId).size() > 0) {
-					sql = "INSERT INTO film_actor (film_id, actor_id) VALUES (?,?)";
-					stmt = conn.prepareStatement(sql);
-					for (Actor actor : findActorsByFilmId(newFilmId)) {
-						stmt.setInt(1, newFilmId);
-						stmt.setInt(2, actor.getId());
-						updateCount = stmt.executeUpdate();
-					}
+//					sql = "INSERT INTO film_actor (film_id, actor_id) VALUES (?,?)";
+//					stmt = conn.prepareStatement(sql);
+//					for (Actor actor : findActorsByFilmId(newFilmId)) {
+//						stmt.setInt(1, newFilmId);
+//						stmt.setInt(2, actor.getId());
+//						updateCount = stmt.executeUpdate();
+//					}
 //					}
 				}
 				keys.close();

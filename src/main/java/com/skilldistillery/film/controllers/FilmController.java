@@ -89,11 +89,16 @@ public class FilmController {
 		return mv;
 	}
 
-	@RequestMapping(path = "updateFilm.do", params="filmID", method = RequestMethod.GET)
-	public ModelAndView goUpdateFilm(int filmID) {
+	@RequestMapping(path = "goToUpdateFilm.do", method = RequestMethod.GET)
+	public ModelAndView goToUpdateFilm(@Valid Film film) {
 		ModelAndView mv = new ModelAndView();
-		Film updatedFilm = filmDAO.updateFilm(filmID);
-		mv.addObject("film", updatedFilm);
+		mv.setViewName("WEB-INF/update.jsp");
+		return mv;
+	}
+	
+	@RequestMapping(path = "updateFilm.do",  method = RequestMethod.POST)
+	public ModelAndView goUpdateFilm(@Valid Film film) {
+		ModelAndView mv = new ModelAndView();
 		mv.setViewName("WEB-INF/results.jsp");
 		return mv;
 	}
