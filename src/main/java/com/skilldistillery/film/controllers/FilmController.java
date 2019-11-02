@@ -1,5 +1,7 @@
 package com.skilldistillery.film.controllers;
 
+import java.sql.SQLException;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +38,15 @@ public class FilmController {
 		return mv;
 	}
 	
+	@RequestMapping(path = "createdFilm.do", method = RequestMethod.POST)
+	public ModelAndView goToCreatedFilm(@Valid Film film) throws SQLException {
+		ModelAndView mv = new ModelAndView();
+		Film newFilm = filmDAO.createFilm(film);
+		mv.addObject("film", newFilm);
+		mv.setViewName("WEB-INF/results.jsp");
+		return mv;
+	}
+	
 	@RequestMapping(path = "notDeleted.do", method = RequestMethod.GET)
 	public ModelAndView goToNotDeleted() {
 		ModelAndView mv = new ModelAndView();
@@ -49,6 +60,18 @@ public class FilmController {
 		mv.setViewName("WEB-INF/not-found.jsp");
 		return mv;
 	}
+	
+	@RequestMapping(path = "deleteFilm.do", params = "filmID", method = RequestMethod.GET)
+    public ModelAndView deleteFilm(int filmID) {
+        ModelAndView mv = new ModelAndView();
+        
+        if(filmDAO.deleteFilmById(filmID) == true) {
+        mv.setViewName("WEB-INF/deleted.jsp");
+        } else {
+        mv.setViewName("notDeleted.do");
+        }
+        return mv;
+    }
 
 	@RequestMapping(path = "getFilmByID.do", params = "filmID", method = RequestMethod.GET)
 	public ModelAndView getFilmByID(int filmID) {
@@ -72,17 +95,6 @@ public class FilmController {
 		return mv;
 	}
 
-	@RequestMapping(path = "deleteFilm.do", params = "filmID", method = RequestMethod.GET)
-	public ModelAndView deleteFilm(int filmID) {
 
-		ModelAndView mv = new ModelAndView();
-		
-		if(filmDAO.deleteFilmById(filmID) == true) {
-		mv.setViewName("WEB-INF/deleted.jsp");
-		} else {
-		mv.setViewName("notDeleted.do");
-		}
-		return mv;
-	}
 
 }

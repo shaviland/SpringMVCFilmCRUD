@@ -32,6 +32,14 @@
 			<td>Special Features:</td>
 			<td>${film.specialFeatures}</td>
 		</tr>
+		<tr>
+			<td>Cast:</td>
+			<td>${film.actors}</td>
+		</tr>
+		<tr>
+			<td>Categories:</td>
+			<td>${film.categories}</td>
+		</tr>
 	</table>
 
 	<form action="deleteFilm.do" method="GET">
