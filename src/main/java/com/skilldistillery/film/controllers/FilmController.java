@@ -98,9 +98,9 @@ public class FilmController {
 	}
 
 	@RequestMapping(path = "updateFilm.do", params = "filmID", method = RequestMethod.POST)
-	public ModelAndView goUpdateFilm(@Valid Film film, int filmID) {
+	public ModelAndView updateFilm(@Valid Film film, int filmID) {
 		ModelAndView mv = new ModelAndView();
-		Film updatedFilm = filmDAO.updateFilm(filmID);
+		Film updatedFilm = filmDAO.updateFilm(filmID, film);
 		mv.addObject("film", updatedFilm);
 		mv.setViewName("WEB-INF/results.jsp");
 		return mv;
