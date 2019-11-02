@@ -320,10 +320,12 @@ public class FilmDAOImpl implements FilmDAO {
 			conn = DriverManager.getConnection(URL, user, password);
 			conn.setAutoCommit(false); // START TRANSACTION
 			String sql = "UPDATE film SET title=?, description=?, release_year=?, language_id=?, rental_duration=?,"
-					+ " rental_rate=?, length=?, replacement_cost=?, rating=?, special_features=?";
+					+ " rental_rate=?, length=?, replacement_cost=?, rating=?, special_features=?"
+					+ " WHERE id = ?";
 
 			PreparedStatement stmt = conn.prepareStatement(sql);
 
+			stmt.setInt(11, filmId);
 			stmt.setString(1, film.getTitle());
 			stmt.setString(2, film.getDescription());
 			stmt.setInt(3, film.getReleaseYear());
@@ -334,6 +336,7 @@ public class FilmDAOImpl implements FilmDAO {
 			stmt.setDouble(8, film.getReplacementCost());
 			stmt.setString(9, film.getRating());
 			stmt.setString(10, film.getSpecialFeatures());
+			
 			int updateCount = stmt.executeUpdate();
 //		    if (updateCount == 1) {
 //		      // Replace actor's film list
