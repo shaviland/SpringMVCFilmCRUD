@@ -1,6 +1,7 @@
 package com.skilldistillery.film.controllers;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import javax.validation.Valid;
 
@@ -85,6 +86,21 @@ public class FilmController {
 		}
 		System.out.println(film);
 		mv.addObject("film", film);
+		mv.setViewName("WEB-INF/results.jsp");
+		return mv;
+	}
+	@RequestMapping(path = "getFilmByID.do", params = "filmID", method = RequestMethod.GET)
+	public ModelAndView findFilmByKeyword(String keyWord) {
+		
+		System.out.println(keyWord);
+		List<Film> films = filmDAO.findFilmByKeyword(keyWord);
+		ModelAndView mv = new ModelAndView();
+		if (films == null) {
+			mv.setViewName("notFound.do");
+			return mv;
+		}
+		System.out.println(films);
+		mv.addObject("films", films);
 		mv.setViewName("WEB-INF/results.jsp");
 		return mv;
 	}
