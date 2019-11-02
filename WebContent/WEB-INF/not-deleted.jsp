@@ -10,7 +10,7 @@
 </head>
 <body>
 	<h1>${film.title}</h1>
-	<h3>HAS BEEN DELETED</h3>
+	<h3>HAS NOT BEEN DELETED</h3>
 	
 		<form action="index.html" method="GET">
 
