@@ -3,8 +3,10 @@ package com.skilldistillery.film.entities;
 import java.util.List;
 import java.util.Map;
 
-public class Film {
+import javax.validation.constraints.NotNull;
 
+public class Film {
+	@NotNull
 //	F I E L D S 
 
 	private int id;
