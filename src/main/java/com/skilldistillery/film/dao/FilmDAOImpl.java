@@ -333,8 +333,7 @@ public class FilmDAOImpl implements FilmDAO {
 			conn = DriverManager.getConnection(URL, user, password);
 			conn.setAutoCommit(false);
 			String sql = "UPDATE film SET title=?, description=?, release_year=?, language_id=?, rental_duration=?,"
-					+ " rental_rate=?, length=?, replacement_cost=?, rating=?, special_features=?, language=?" 
-					+ " JOIN language ON film.language_id = language.id"
+					+ " rental_rate=?, length=?, replacement_cost=?, rating=?, special_features=?" 
 					+ " WHERE id = ?";
 
 			PreparedStatement stmt = conn.prepareStatement(sql);
@@ -349,31 +348,7 @@ public class FilmDAOImpl implements FilmDAO {
 			stmt.setDouble(8, film.getReplacementCost());
 			stmt.setString(9, film.getRating());
 			stmt.setString(10, film.getSpecialFeatures());
-			switch (film.getLanguageId()) {
-
-			case 1:
-				stmt.setString(11, "English");
-				break;
-			case 2:
-				stmt.setString(11, "Italian");
-				break;
-			case 3:
-				stmt.setString(11, "Japanese");
-				break;
-			case 4:
-				stmt.setString(11, "Mandarin");
-				break;
-			case 5:
-				stmt.setString(11, "French");
-				break;
-			case 6:
-				stmt.setString(11, "German");
-				break;
-			default:
-				break;
-
-			}
-			stmt.setInt(12, filmId);
+			stmt.setInt(11, filmId);
 
 			int updateCount = stmt.executeUpdate();
 			conn.commit();

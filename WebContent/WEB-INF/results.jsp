@@ -14,10 +14,6 @@
 	
 	<table>
 		<tr>
-			<td>Film ID:</td>
-			<td>${film.id}</td>
-		</tr>
-		<tr>
 			<td>Release Year:</td>
 			<td>${film.releaseYear}</td>
 		</tr>
