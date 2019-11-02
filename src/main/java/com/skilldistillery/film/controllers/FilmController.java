@@ -1,5 +1,7 @@
 package com.skilldistillery.film.controllers;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,7 +30,7 @@ public class FilmController {
 	}
 	
 	@RequestMapping(path = "createFilm.do", method = RequestMethod.GET)
-	public ModelAndView goToCreateFilm() {
+	public ModelAndView goToCreateFilm(@Valid Film film) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("WEB-INF/create.jsp");
 		return mv;
