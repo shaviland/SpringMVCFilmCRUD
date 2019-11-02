@@ -35,7 +35,7 @@
 	</table>
 
 	<form action="deleteFilm.do" method="GET">
-		<input type="number" name="filmID" value="${film.id}" /> 
+		<input type="hidden" name="filmID" value="${film.id}" /> 
 		<input type="submit" value="DELETE FILM" />
 	</form>
 </body>
