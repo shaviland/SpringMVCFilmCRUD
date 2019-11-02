@@ -43,11 +43,22 @@
 		<form:errors path="replacementCost" />
 		<br />
 		<form:label path="rating">Rating:</form:label>
-		<form:input path="rating" />
+		<div>
+			<input type="radio" name="rating" value="G"> G<br>
+			<input type="radio" name="rating" value="PG"> PG<br>
+			<input type="radio" name="rating" value="PG13"> PG-13<br>
+			<input type="radio" name="rating" value="NC17"> NC-17<br>
+		</div>
 		<form:errors path="rating" />
 		<br />
 		<form:label path="specialFeatures">Special Features:</form:label>
-		<form:input path="specialFeatures" />
+		<div>
+			<input type="checkbox" name="specialFeatures" value="Trailers">Trailers<br>
+			<input type="checkbox" name="specialFeatures" value="Commentaries"> Commentaries<br>
+			<input type="checkbox" name="specialFeatures" value="Deleted Scenes">Deleted Scenes<br>
+			<input type="checkbox" name="specialFeatures" value="Behind the Scenes"> Behind the Scenes<br>
+		</div>
+	
 		<form:errors path="specialFeatures" />
 		<br />
 		<input type="submit" value="Update Film" />
