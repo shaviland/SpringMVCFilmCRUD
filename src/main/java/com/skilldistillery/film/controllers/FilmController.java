@@ -89,7 +89,7 @@ public class FilmController {
 		mv.setViewName("WEB-INF/results.jsp");
 		return mv;
 	}
-	@RequestMapping(path = "getFilmByID.do", params = "filmID", method = RequestMethod.GET)
+	@RequestMapping(path = "findFilmByKeyword.do", params = "filmKey", method = RequestMethod.GET)
 	public ModelAndView findFilmByKeyword(String keyWord) {
 		
 		System.out.println(keyWord);
