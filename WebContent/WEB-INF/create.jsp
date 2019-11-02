@@ -22,8 +22,15 @@
 		<form:input path="releaseYear" />
 		<form:errors path="releaseYear" />
 		<br />
-		<form:label path="languageId">Language ID:</form:label>
-		<form:input path="languageId" />
+		<form:label path="languageId">Language:</form:label>
+		<select>
+			<option value="1">English</option>
+			<option value="2">Italian</option>
+			<option value="3">Japanese</option>
+			<option value="4">Mandarin</option>
+			<option value="5">French</option>
+			<option value="6">German</option>
+		</select>
 		<form:errors path="languageId" />
 		<br />
 		<form:label path="rentalDuration">Rental Duration:</form:label>
@@ -44,21 +51,23 @@
 		<br />
 		<form:label path="rating">Rating:</form:label>
 		<div>
-			<input type="radio" name="rating" value="G"> G<br>
-			<input type="radio" name="rating" value="PG"> PG<br>
-			<input type="radio" name="rating" value="PG13"> PG-13<br>
-			<input type="radio" name="rating" value="NC17"> NC-17<br>
+			<input type="radio" name="rating" value="G"> G<br> <input
+				type="radio" name="rating" value="PG"> PG<br> <input
+				type="radio" name="rating" value="PG13"> PG-13<br> <input
+				type="radio" name="rating" value="NC17"> NC-17<br>
 		</div>
 		<form:errors path="rating" />
 		<br />
 		<form:label path="specialFeatures">Special Features:</form:label>
 		<div>
 			<input type="checkbox" name="specialFeatures" value="Trailers">Trailers<br>
-			<input type="checkbox" name="specialFeatures" value="Commentaries"> Commentaries<br>
-			<input type="checkbox" name="specialFeatures" value="Deleted Scenes">Deleted Scenes<br>
-			<input type="checkbox" name="specialFeatures" value="Behind the Scenes"> Behind the Scenes<br>
+			<input type="checkbox" name="specialFeatures" value="Commentaries">
+			Commentaries<br> <input type="checkbox" name="specialFeatures"
+				value="Deleted Scenes">Deleted Scenes<br> <input
+				type="checkbox" name="specialFeatures" value="Behind the Scenes">
+			Behind the Scenes<br>
 		</div>
-	
+
 		<form:errors path="specialFeatures" />
 		<br />
 		<input type="submit" value="Create Film" />
