@@ -7,16 +7,19 @@
 <body>
 
 	<h1>Welcome to Film Database Home</h1>
+	<div id="lookUp">
+		<form action="getFilmByID.do" method="GET">
+			<p>Look up film by ID</p>
+			<input type="input" name="filmID" placeholder="Enter film ID"/> 
+			<input type="submit" value="Search" />
+		</form>
+	</div>
+	<div id="createFilm">
 
-	<form action="getFilmByID.do" method="GET">
-
-		<input type="number" name="filmID" /> <input type="submit"
-			value="Search for Film By ID" />
-	</form>
-
-	<form action="createFilm.do" method=GET>
-		<input type="submit" value="Create a new film" />
-	</form>
+		<form action="createFilm.do" method=GET>
+			<input type="submit" value="Create a new film" />
+		</form>
+	</div>
 
 </body>
 </html>
