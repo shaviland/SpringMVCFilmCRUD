@@ -6,10 +6,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Create Film</title>
+<title>Update Film</title>
 </head>
 <body>
-	<form:form action="createFilm.do" method="GET" modelAttribute="film">
+	<form:form action="updateFilm.do" method="POST" modelAttribute="film">
 		<form:label path="title">Title:</form:label>
 		<form:input path="title" />
 		<form:errors path="title" />

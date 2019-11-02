@@ -38,5 +38,9 @@
 		<input type="hidden" name="filmID" value="${film.id}" /> 
 		<input type="submit" value="DELETE FILM" />
 	</form>
+	<form action="updateFilm.do" method="GET">
+		<input type="hidden" name="filmID" value="${film.id}" /> 
+		<input type="submit" value="UPDATE FILM" />
+	</form>
 </body>
 </html>

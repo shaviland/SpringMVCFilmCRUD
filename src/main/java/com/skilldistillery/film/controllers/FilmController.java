@@ -65,6 +65,12 @@ public class FilmController {
 		mv.setViewName("WEB-INF/results.jsp");
 		return mv;
 	}
+	@RequestMapping(path = "updateFilm.do", method = RequestMethod.POST)
+	public ModelAndView goUpdateFilm(@Valid Film film) {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("WEB-INF/update.jsp");
+		return mv;
+	}
 
 	@RequestMapping(path = "deleteFilm.do", params = "filmID", method = RequestMethod.GET)
 	public ModelAndView deleteFilm(int filmID) {
