@@ -219,7 +219,7 @@ public class FilmDAOImpl implements FilmDAO {
 		Connection conn = null;
 		try {
 			conn = DriverManager.getConnection(URL, user, password);
-			conn.setAutoCommit(false); 
+			conn.setAutoCommit(false);
 			String sql = "INSERT INTO film (title, description, release_year, language_id, rental_duration, rental_rate, length, replacement_cost, rating, special_features) "
 					+ " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -234,6 +234,30 @@ public class FilmDAOImpl implements FilmDAO {
 			stmt.setDouble(8, film.getReplacementCost());
 			stmt.setString(9, film.getRating());
 			stmt.setString(10, film.getSpecialFeatures());
+			switch (film.getLanguageId()) {
+
+			case 1:
+				film.setLanguage("English");
+				break;
+			case 2:
+				film.setLanguage("Italian");
+				break;
+			case 3:
+				film.setLanguage("Japanese");
+				break;
+			case 4:
+				film.setLanguage("Mandarin");
+				break;
+			case 5:
+				film.setLanguage("French");
+				break;
+			case 6:
+				film.setLanguage("German");
+				break;
+			default:
+				break;
+
+			}
 			int updateCount = stmt.executeUpdate();
 			System.out.println("Created " + updateCount + " new film.");
 			if (updateCount == 1) {
@@ -247,7 +271,7 @@ public class FilmDAOImpl implements FilmDAO {
 			} else {
 				film = null;
 			}
-			conn.commit(); 
+			conn.commit();
 			stmt.close();
 			return film;
 		} catch (SQLException sqle) {
@@ -273,13 +297,13 @@ public class FilmDAOImpl implements FilmDAO {
 
 		try {
 			conn = DriverManager.getConnection(URL, user, password);
-			conn.setAutoCommit(false); 
+			conn.setAutoCommit(false);
 			String sql = "DELETE FROM film WHERE film.id = ?";
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, film.getId());
 			int updateCount = stmt.executeUpdate();
 			System.out.println("Deleted (" + updateCount + ") film:" + film.getTitle());
-			conn.commit(); 
+			conn.commit();
 
 		} catch (SQLException sqle) {
 			sqle.printStackTrace();
@@ -309,7 +333,8 @@ public class FilmDAOImpl implements FilmDAO {
 			conn = DriverManager.getConnection(URL, user, password);
 			conn.setAutoCommit(false);
 			String sql = "UPDATE film SET title=?, description=?, release_year=?, language_id=?, rental_duration=?,"
-					+ " rental_rate=?, length=?, replacement_cost=?, rating=?, special_features=?"
+					+ " rental_rate=?, length=?, replacement_cost=?, rating=?, special_features=?, language=?" 
+					+ " JOIN language ON film.language_id = language.id"
 					+ " WHERE id = ?";
 
 			PreparedStatement stmt = conn.prepareStatement(sql);
@@ -324,17 +349,40 @@ public class FilmDAOImpl implements FilmDAO {
 			stmt.setDouble(8, film.getReplacementCost());
 			stmt.setString(9, film.getRating());
 			stmt.setString(10, film.getSpecialFeatures());
-			stmt.setInt(11, filmId);
-			
+			switch (film.getLanguageId()) {
+
+			case 1:
+				stmt.setString(11, "English");
+				break;
+			case 2:
+				stmt.setString(11, "Italian");
+				break;
+			case 3:
+				stmt.setString(11, "Japanese");
+				break;
+			case 4:
+				stmt.setString(11, "Mandarin");
+				break;
+			case 5:
+				stmt.setString(11, "French");
+				break;
+			case 6:
+				stmt.setString(11, "German");
+				break;
+			default:
+				break;
+
+			}
+			stmt.setInt(12, filmId);
+
 			int updateCount = stmt.executeUpdate();
-			conn.commit(); 
+			conn.commit();
 		} catch (SQLException sqle) {
 			sqle.printStackTrace();
 			if (conn != null) {
 				try {
 					conn.rollback();
-				} 
-				catch (SQLException sqle2) {
+				} catch (SQLException sqle2) {
 					System.err.println("Error trying to rollback");
 				}
 			}
