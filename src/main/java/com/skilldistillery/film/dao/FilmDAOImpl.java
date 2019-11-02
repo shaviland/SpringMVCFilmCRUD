@@ -306,7 +306,6 @@ public class FilmDAOImpl implements FilmDAO {
 	public Film updateFilm(int filmId, Film film) {
 		Connection conn = null;
 		try {
-			film = findFilmById(filmId);
 			conn = DriverManager.getConnection(URL, user, password);
 			conn.setAutoCommit(false);
 			String sql = "UPDATE film SET title=?, description=?, release_year=?, language_id=?, rental_duration=?,"
