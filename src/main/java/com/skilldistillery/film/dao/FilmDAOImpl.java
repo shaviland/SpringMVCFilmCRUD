@@ -299,7 +299,6 @@ public class FilmDAOImpl implements FilmDAO {
 					System.err.println("Error trying to rollback");
 				}
 			}
-			return filmDeleted;
 		}
 		
 			Film findFilm = findFilmById(filmId);

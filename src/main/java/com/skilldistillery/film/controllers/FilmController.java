@@ -69,7 +69,7 @@ public class FilmController {
 
 		ModelAndView mv = new ModelAndView();
 		
-		if(filmDAO.deleteFilmById(filmID)) {
+		if(filmDAO.deleteFilmById(filmID) == true) {
 		mv.setViewName("WEB-INF/deleted.jsp");
 		} else {
 		mv.setViewName("notDeleted.do");
