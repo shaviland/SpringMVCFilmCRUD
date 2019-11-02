@@ -33,14 +33,32 @@ public class FilmController {
 		mv.setViewName("WEB-INF/create.jsp");
 		return mv;
 	}
+	
+	@RequestMapping(path = "notDeleted.do", method = RequestMethod.GET)
+	public ModelAndView goToNotDeleted() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("WEB-INF/not-deleted.jsp");
+		return mv;
+	}
+	
+	@RequestMapping(path = "notFound.do", method = RequestMethod.GET)
+	public ModelAndView goToNotFound() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("WEB-INF/not-found.jsp");
+		return mv;
+	}
 
 	@RequestMapping(path = "getFilmByID.do", params = "filmID", method = RequestMethod.GET)
 	public ModelAndView getFilmByID(int filmID) {
 
 		System.out.println(filmID);
 		Film film = filmDAO.findFilmById(filmID);
-		System.out.println(film);
 		ModelAndView mv = new ModelAndView();
+		if(film == null) {
+			mv.setViewName("notFound.do");
+			return mv;
+		}
+		System.out.println(film);
 		mv.addObject("film", film);
 		mv.setViewName("WEB-INF/results.jsp");
 		return mv;
@@ -50,10 +68,11 @@ public class FilmController {
 	public ModelAndView deleteFilm(int filmID) {
 
 		ModelAndView mv = new ModelAndView();
+		
 		if(filmDAO.deleteFilmById(filmID)) {
 		mv.setViewName("WEB-INF/deleted.jsp");
 		} else {
-		mv.setViewName("WEB-INF/notDeleted.jsp");
+		mv.setViewName("notDeleted.do");
 		}
 		return mv;
 	}

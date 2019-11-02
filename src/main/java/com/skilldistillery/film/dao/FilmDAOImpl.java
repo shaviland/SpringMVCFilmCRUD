@@ -279,6 +279,9 @@ public class FilmDAOImpl implements FilmDAO {
 
 		Film film = findFilmById(filmId);
 		Connection conn = null;
+		if(film == null) {
+			return false;
+		}
 		try {
 			conn = DriverManager.getConnection(URL, user, password);
 			conn.setAutoCommit(false); // START TRANSACTION
@@ -288,7 +291,9 @@ public class FilmDAOImpl implements FilmDAO {
 			int updateCount = stmt.executeUpdate();
 			System.out.println("Deleted (" + updateCount + ") film:" + film.getTitle());
 			conn.commit(); // COMMIT TRANSACTION
-			return true;
+			if(updateCount == 0) {
+				return false;
+			}
 		} catch (SQLException sqle) {
 			sqle.printStackTrace();
 			if (conn != null) {
@@ -300,6 +305,7 @@ public class FilmDAOImpl implements FilmDAO {
 			}
 			return false;
 		}
+		return true;
 	}
 
 	public PreparedStatement setUp(int id, Connection conn, String sql) throws SQLException {
