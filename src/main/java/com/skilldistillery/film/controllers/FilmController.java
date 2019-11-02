@@ -30,14 +30,14 @@ public class FilmController {
 	public String goHome() {
 		return "index.html";
 	}
-	
+
 	@RequestMapping(path = "createFilm.do", method = RequestMethod.GET)
 	public ModelAndView goToCreateFilm(@Valid Film film) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("WEB-INF/create.jsp");
 		return mv;
 	}
-	
+
 	@RequestMapping(path = "createdFilm.do", method = RequestMethod.POST)
 	public ModelAndView goToCreatedFilm(@Valid Film film) throws SQLException {
 		ModelAndView mv = new ModelAndView();
@@ -46,32 +46,32 @@ public class FilmController {
 		mv.setViewName("WEB-INF/results.jsp");
 		return mv;
 	}
-	
+
 	@RequestMapping(path = "notDeleted.do", method = RequestMethod.GET)
 	public ModelAndView goToNotDeleted() {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("WEB-INF/not-deleted.jsp");
 		return mv;
 	}
-	
+
 	@RequestMapping(path = "notFound.do", method = RequestMethod.GET)
 	public ModelAndView goToNotFound() {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("WEB-INF/not-found.jsp");
 		return mv;
 	}
-	
+
 	@RequestMapping(path = "deleteFilm.do", params = "filmID", method = RequestMethod.GET)
-    public ModelAndView deleteFilm(int filmID) {
-        ModelAndView mv = new ModelAndView();
-        
-        if(filmDAO.deleteFilmById(filmID) == true) {
-        mv.setViewName("WEB-INF/deleted.jsp");
-        } else {
-        mv.setViewName("notDeleted.do");
-        }
-        return mv;
-    }
+	public ModelAndView deleteFilm(int filmID) {
+		ModelAndView mv = new ModelAndView();
+
+		if (filmDAO.deleteFilmById(filmID) == true) {
+			mv.setViewName("WEB-INF/deleted.jsp");
+		} else {
+			mv.setViewName("notDeleted.do");
+		}
+		return mv;
+	}
 
 	@RequestMapping(path = "getFilmByID.do", params = "filmID", method = RequestMethod.GET)
 	public ModelAndView getFilmByID(int filmID) {
@@ -79,7 +79,7 @@ public class FilmController {
 		System.out.println(filmID);
 		Film film = filmDAO.findFilmById(filmID);
 		ModelAndView mv = new ModelAndView();
-		if(film == null) {
+		if (film == null) {
 			mv.setViewName("notFound.do");
 			return mv;
 		}
@@ -88,13 +88,14 @@ public class FilmController {
 		mv.setViewName("WEB-INF/results.jsp");
 		return mv;
 	}
-	@RequestMapping(path = "updateFilm.do", method = RequestMethod.POST)
-	public ModelAndView goUpdateFilm(@Valid Film film) {
+
+	@RequestMapping(path = "updateFilm.do", params="filmID", method = RequestMethod.GET)
+	public ModelAndView goUpdateFilm(int filmID) {
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("WEB-INF/update.jsp");
+		Film updatedFilm = filmDAO.updateFilm(filmID);
+		mv.addObject("film", updatedFilm);
+		mv.setViewName("WEB-INF/results.jsp");
 		return mv;
 	}
-
-
 
 }

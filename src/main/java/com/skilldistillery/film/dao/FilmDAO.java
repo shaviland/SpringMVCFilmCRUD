@@ -23,4 +23,6 @@ public interface FilmDAO {
 	public Film createFilm(Film film) throws SQLException;
 
 	public boolean deleteFilmById(int filmId);
+	
+	public Film updateFilm(int filmId);
 }

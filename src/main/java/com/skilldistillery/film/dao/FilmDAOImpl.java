@@ -279,7 +279,7 @@ public class FilmDAOImpl implements FilmDAO {
 		boolean filmDeleted = false;
 		Film film = findFilmById(filmId);
 		Connection conn = null;
-		
+
 		try {
 			conn = DriverManager.getConnection(URL, user, password);
 			conn.setAutoCommit(false); // START TRANSACTION
@@ -300,29 +300,30 @@ public class FilmDAOImpl implements FilmDAO {
 				}
 			}
 		}
-		
-			Film findFilm = findFilmById(filmId);
-			if(findFilm == null) {
-				filmDeleted = false;
-			}else {
-				filmDeleted = true;
-			}
-			
-		
+
+		Film findFilm = findFilmById(filmId);
+		if (findFilm == null) {
+			filmDeleted = false;
+		} else {
+			filmDeleted = true;
+		}
+
 		return filmDeleted;
 	}
-	public boolean updateFilm(int filmId) {
-		Film film = findFilmById(filmId);
-		  Connection conn = null;
-		  try {
-		    conn = DriverManager.getConnection(URL, user, password);
-		    conn.setAutoCommit(false); // START TRANSACTION
-		    String sql = "UPDATE film SET title=?, description=?, release_year=?, language_id=?, rental_duration=?,"
-		    		+ " rental_rate=?, length=?, replacement_cost=?, rating=?, special_features=?";
-					
-		    PreparedStatement stmt = conn.prepareStatement(sql);
 
-		    
+	@Override
+	public Film updateFilm(int filmId) {
+		Film film = null;
+		Connection conn = null;
+		try {
+			film = findFilmById(filmId);
+			conn = DriverManager.getConnection(URL, user, password);
+			conn.setAutoCommit(false); // START TRANSACTION
+			String sql = "UPDATE film SET title=?, description=?, release_year=?, language_id=?, rental_duration=?,"
+					+ " rental_rate=?, length=?, replacement_cost=?, rating=?, special_features=?";
+
+			PreparedStatement stmt = conn.prepareStatement(sql);
+
 			stmt.setString(1, film.getTitle());
 			stmt.setString(2, film.getDescription());
 			stmt.setInt(3, film.getReleaseYear());
@@ -333,34 +334,36 @@ public class FilmDAOImpl implements FilmDAO {
 			stmt.setDouble(8, film.getReplacementCost());
 			stmt.setString(9, film.getRating());
 			stmt.setString(10, film.getSpecialFeatures());
-		    int updateCount = stmt.executeUpdate();
-		    if (updateCount == 1) {
-		      // Replace actor's film list
-		      sql = "DELETE FROM film_actor WHERE film_id = ?";
-		      stmt = conn.prepareStatement(sql);
-		      stmt.setInt(1, film.getId());
-		      updateCount = stmt.executeUpdate();
-		      sql = "INSERT INTO film_actor (film_id, actor_id) VALUES (?,?)";
-		      stmt = conn.prepareStatement(sql);
-		      for (Actor actor : film.getActors()) {
-		        stmt.setInt(1, actor.getId());
-		        stmt.setInt(2, film.getId());
-		        updateCount = stmt.executeUpdate();
-		      }
-		      conn.commit();           // COMMIT TRANSACTION
-		    }
-		  } catch (SQLException sqle) {
-		    sqle.printStackTrace();
-		    if (conn != null) {
-		      try { conn.rollback(); } // ROLLBACK TRANSACTION ON ERROR
-		      catch (SQLException sqle2) {
-		        System.err.println("Error trying to rollback");
-		      }
-		    }
-		    return false;
-		  }
-		  return true;
+			int updateCount = stmt.executeUpdate();
+//		    if (updateCount == 1) {
+//		      // Replace actor's film list
+//		      sql = "DELETE FROM film_actor WHERE film_id = ?";
+//		      stmt = conn.prepareStatement(sql);
+//		      stmt.setInt(1, film.getId());
+//		      updateCount = stmt.executeUpdate();
+//		      sql = "INSERT INTO film_actor (film_id, actor_id) VALUES (?,?)";
+//		      stmt = conn.prepareStatement(sql);
+//		      for (Actor actor : film.getActors()) {
+//		        stmt.setInt(1, actor.getId());
+//		        stmt.setInt(2, film.getId());
+//		        updateCount = stmt.executeUpdate();
+//		      }
+			conn.commit(); // COMMIT TRANSACTION
+//		    }
+		} catch (SQLException sqle) {
+			sqle.printStackTrace();
+			if (conn != null) {
+				try {
+					conn.rollback();
+				} // ROLLBACK TRANSACTION ON ERROR
+				catch (SQLException sqle2) {
+					System.err.println("Error trying to rollback");
+				}
+			}
+			return film;
 		}
+		return film;
+	}
 
 	public PreparedStatement setUp(int id, Connection conn, String sql) throws SQLException {
 		PreparedStatement stmt = conn.prepareStatement(sql);
