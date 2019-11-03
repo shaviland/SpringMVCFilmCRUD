@@ -29,6 +29,11 @@
 		<input type="hidden" name="actorID" value="${actor.id}" /> <input
 			type="submit" value="UPDATE ACTOR" />
 	</form>
+	<form action="addActorToFilm.do" method="GET">
+		<input type="hidden" name="actorID" value="${actor.id}" /> 
+		<input type="number" name="filmID" />
+		<input type="submit" value="Add Actor to Film: (Enter Film ID)" />
+	</form>
 	<form action="index.html" method="GET">
 		<input type="submit" value="Return to Home Page" />
 	</form>
