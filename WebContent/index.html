@@ -2,38 +2,53 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <title>Home</title>
 </head>
 <body>
-
-	<h1>Welcome to Film Database Home</h1>
-	<div id="lookUp">
-		<form action="getFilmByID.do" method="GET">
-			<p>Look up film by ID</p>
-			<input type="input" name="filmID" placeholder="Enter film ID"/> 
-			<input type="submit" value="Search" />
-		</form>
+	<div class="jumbotron text-center">
+		<h1>Welcome to Film Database Home</h1>
 	</div>
-	<div id="lookUp">
-		<form action="findFilmByKeyword.do" method="GET">
-			<p>Look up film by Keyword</p>
-			<input type="input" name="filmKey" placeholder="Enter Keyword"/> 
-			<input type="submit" value="Search" />
-		</form>
-	</div>
-	<br>
-	<div id="createFilm">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-4">
+				<form action="getFilmByID.do" method="GET">
+					<p>Look up film by ID</p>
+					<input type="number" name="filmID" placeholder="Enter film ID"
+						value="0" /> <input type="submit" value="Search" />
+				</form>
+			</div>
+			<div class="col-sm-4">
+				<form action="findFilmByKeyword.do" method="GET">
+					<p>Look up film by Keyword</p>
+					<input type="input" name="filmKey" default="default"
+						placeholder="Enter Keyword" /> <input type="submit"
+						value="Search" />
+				</form>
+			</div>
+		</div>
+		<br>
+		<div class="col-sm-4">
 
-		<form action="createFilm.do" method=GET>
-			<input type="submit" value="Create a new film" />
-		</form>
-	</div>
-	<br>
-	<div id="createActor">
+			<form action="createFilm.do" method=GET>
+				<input type="submit" value="Create a new film" />
+			</form>
+		</div>
 
-		<form action="createActor.do" method=GET>
-			<input type="submit" value="Create a new actor" />
-		</form>
+		<br>
+
+		<div class="col-sm-4">
+
+			<form action="createActor.do" method=GET>
+				<input type="submit" value="Create a new actor" />
+			</form>
+		</div>
 	</div>
 
 </body>

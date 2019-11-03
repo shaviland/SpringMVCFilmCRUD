@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.skilldistillery.film.dao.FilmDAO;
-import com.skilldistillery.film.entities.Actor;
 import com.skilldistillery.film.entities.Film;
 
 @Controller
@@ -48,22 +47,6 @@ public class FilmController {
 		mv.setViewName("WEB-INF/results.jsp");
 		return mv;
 	}
-	
-	@RequestMapping(path = "createActor.do", method = RequestMethod.GET)
-	public ModelAndView goToCreateActor(@Valid Actor actor) {
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("WEB-INF/create-actor.jsp");
-		return mv;
-	}
-	
-	@RequestMapping(path = "createdActor.do", method = RequestMethod.POST)
-	public ModelAndView goToCreatedActor(@Valid Actor actor) throws SQLException {
-		ModelAndView mv = new ModelAndView();
-		Actor newActor = filmDAO.createActor(actor);
-		mv.addObject("actor", newActor);
-		mv.setViewName("WEB-INF/actor-results.jsp");
-		return mv;
-	}
 
 	@RequestMapping(path = "notDeleted.do", method = RequestMethod.GET)
 	public ModelAndView goToNotDeleted() {
@@ -94,13 +77,9 @@ public class FilmController {
 	@RequestMapping(path = "getFilmByID.do", params = "filmID", method = RequestMethod.GET)
 	public ModelAndView getFilmByID(int filmID) {
 
-		ModelAndView mv = new ModelAndView();
-		if(filmID < 1) {
-			mv.setViewName("WEB-INF/not-found.jsp");
-			return mv;
-		}
 		System.out.println(filmID);
 		Film film = filmDAO.findFilmById(filmID);
+		ModelAndView mv = new ModelAndView();
 		if (film == null) {
 			mv.setViewName("notFound.do");
 			return mv;
@@ -127,7 +106,6 @@ public class FilmController {
 		return mv;
 	}
 
-	@RequestMapping(path = "goToUpdateFilm.do", params = "filmID", method = RequestMethod.GET)
 	public ModelAndView goToUpdateFilm(@Valid Film film, int filmID) {
 		ModelAndView mv = new ModelAndView();
 		Film oldFilm = filmDAO.findFilmById(filmID);
@@ -142,11 +120,11 @@ public class FilmController {
 		ModelAndView mv = new ModelAndView();
 
 		Film updatedFilm = filmDAO.updateFilm(filmID, film);
-		if (!film.equals(updatedFilm)) {
+		if (film.equals(updatedFilm)) {
 			mv.setViewName("WEB-INF/not-updated.jsp");
 		} else {
 			mv.addObject("film", updatedFilm);
-			mv.setViewName("WEB-INF/film-updated-results.jsp");
+			mv.setViewName("WEB-INF/results.jsp");
 		}
 		return mv;
 	}
