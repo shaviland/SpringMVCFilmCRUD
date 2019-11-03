@@ -94,9 +94,13 @@ public class FilmController {
 	@RequestMapping(path = "getFilmByID.do", params = "filmID", method = RequestMethod.GET)
 	public ModelAndView getFilmByID(int filmID) {
 
+		ModelAndView mv = new ModelAndView();
+		if(filmID < 1) {
+			mv.setViewName("WEB-INF/not-found.jsp");
+			return mv;
+		}
 		System.out.println(filmID);
 		Film film = filmDAO.findFilmById(filmID);
-		ModelAndView mv = new ModelAndView();
 		if (film == null) {
 			mv.setViewName("notFound.do");
 			return mv;
