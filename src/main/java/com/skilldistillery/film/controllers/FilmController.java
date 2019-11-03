@@ -89,6 +89,22 @@ public class FilmController {
 		mv.setViewName("WEB-INF/results.jsp");
 		return mv;
 	}
+	
+	@RequestMapping(path = "getActorByID.do", params = "filmID", method = RequestMethod.GET)
+	public ModelAndView getFilmByID(int filmID) {
+		
+		System.out.println(filmID);
+		Film film = filmDAO.findFilmById(filmID);
+		ModelAndView mv = new ModelAndView();
+		if (film == null) {
+			mv.setViewName("notFound.do");
+			return mv;
+		}
+		System.out.println(film);
+		mv.addObject("film", film);
+		mv.setViewName("WEB-INF/results.jsp");
+		return mv;
+	}
 
 	@RequestMapping(path = "findFilmByKeyword.do", params = "filmKey", method = RequestMethod.GET)
 	public ModelAndView findFilmByKeyword(String filmKey) {

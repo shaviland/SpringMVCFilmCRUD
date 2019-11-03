@@ -44,7 +44,13 @@
 		<br>
 
 		<div class="col-sm-4">
-
+			<div class="col-sm-4">
+				<form action="getActorByID.do" method="GET">
+					<p>Look up actor by ID</p>
+					<input type="number" name="actorID" placeholder="Enter film ID"
+						value="0" /> <input type="submit" value="Search" />
+				</form>
+			</div>
 			<form action="createActor.do" method=GET>
 				<input type="submit" value="Create a new actor" />
 			</form>
