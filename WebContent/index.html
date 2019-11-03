@@ -5,8 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <link href="/css/style.css" rel="stylesheet" type="text/css">
 <title>Home</title>
 </head>
@@ -31,18 +33,6 @@
 						value="Search" />
 				</form>
 			</div>
-		</div>
-		<br>
-		<div class="col-sm-4">
-
-			<form action="createFilm.do" method=GET>
-				<input type="submit" value="Create a new film" />
-			</form>
-		</div>
-
-		<br>
-
-		<div class="col-sm-4">
 			<div class="col-sm-4">
 				<form action="getActorByID.do" method="GET">
 					<p>Look up actor by ID</p>
@@ -50,9 +40,18 @@
 						value="0" /> <input type="submit" value="Search" />
 				</form>
 			</div>
-			<form action="createActor.do" method=GET>
-				<input type="submit" value="Create a new actor" />
-			</form>
+			<br>
+			<br>
+			<div id="createFilm" class="col-sm-4">
+				<form action="createFilm.do" method=GET>
+					<input type="submit" value="Create a new film" />
+				</form>
+			</div>
+			<div id="createActor" class="col-sm-4">
+				<form action="createActor.do" method=GET>
+					<input type="submit" value="Create a new actor" />
+				</form>
+			</div>
 		</div>
 	</div>
 
