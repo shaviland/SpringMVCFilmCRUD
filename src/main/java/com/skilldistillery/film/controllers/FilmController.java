@@ -107,6 +107,7 @@ public class FilmController {
 		return mv;
 	}
 
+	@RequestMapping(path = "goToUpdateFilm.do", params = "filmID", method = RequestMethod.GET)
 	public ModelAndView goToUpdateFilm(@Valid Film film, int filmID) {
 		ModelAndView mv = new ModelAndView();
 		Film oldFilm = filmDAO.findFilmById(filmID);
@@ -121,7 +122,7 @@ public class FilmController {
 		ModelAndView mv = new ModelAndView();
 
 		Film updatedFilm = filmDAO.updateFilm(filmID, film);
-		if (film.equals(updatedFilm)) {
+		if (!film.equals(updatedFilm)) {
 			mv.setViewName("WEB-INF/not-updated.jsp");
 		} else {
 			mv.addObject("film", updatedFilm);
