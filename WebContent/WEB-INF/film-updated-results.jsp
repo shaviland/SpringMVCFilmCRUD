@@ -45,11 +45,11 @@
 	</table>
 
 	<form action="deleteFilm.do" method="GET">
-		<input type="hidden" name="filmID" value="${film.id}" /> <input
-			type="submit" value="DELETE FILM" />
+		<input type="hidden" name="filmID" value="${oldFilmID}" /> 
+		<input type="submit" value="DELETE FILM" />
 	</form>
 	<form action="goToUpdateFilm.do" method="GET">
-		<input type="hidden" name="filmID" value="${film.id}" /> 
+		<input type="hidden" name="filmID" value="${oldFilmID}" /> 
 		<input type="submit" value="UPDATE FILM" />
 	</form>
 	<form action="index.html" method="GET">
