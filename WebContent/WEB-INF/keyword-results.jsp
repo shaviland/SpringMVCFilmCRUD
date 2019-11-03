@@ -13,8 +13,8 @@
 	<c:forEach items="${films}" var="film">
 		<table>
 			<tr>
-				<td>Title: ${film.title}</td>
-				<td>ID: ${film.id}</td>
+				<td>Title: ${film.title} [</td>
+				<td>ID: ${film.id}]</td>
 			</tr>
 		</table>
 
