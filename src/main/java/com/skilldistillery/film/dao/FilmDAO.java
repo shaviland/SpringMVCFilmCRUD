@@ -4,8 +4,6 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
-import javax.validation.Valid;
-
 import com.skilldistillery.film.entities.Actor;
 import com.skilldistillery.film.entities.Film;
 
@@ -25,15 +23,10 @@ public interface FilmDAO {
 	public Film createFilm(Film film) throws SQLException;
 
 	public boolean deleteFilmById(int filmId);
-	
+
 	public Film updateFilm(int filmId, Film film);
-	
+
 	public Actor createActor(Actor actor) throws SQLException;
-<<<<<<< HEAD
 
-
-=======
-	
 	public Actor updateActor(int actorId, Actor actor);
->>>>>>> f838c3bc86351ef3fd0c9dcdb0ca8be83442f994
 }
