@@ -474,6 +474,50 @@ public class FilmDAOImpl implements FilmDAO {
 		}
 		return actor;
 	}
+	
+	@Override
+	public boolean addActorIntoFilm(int actorID, int filmID) throws SQLException {
+		Connection conn = null;
+		List<Integer> filmIDs = new ArrayList<>();
+		boolean result = false;
+		try {
+			conn = DriverManager.getConnection(URL, user, password);
+			conn.setAutoCommit(false);
+			String sql = "INSERT INTO film_actor (actor_id, film_id) " 
+			+ " VALUES (?, ?)";
+			PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+			
+			stmt.setInt(1, actorID);
+			stmt.setInt(2, filmID);
+			int updateCount = stmt.executeUpdate();
+			System.out.println("Created " + updateCount + " new film_actor.");
+			if (updateCount == 1) {
+				ResultSet keys = stmt.getGeneratedKeys();
+				if (keys.next()) {
+					int newActorId = keys.getInt(1);
+					System.out.println("New film_actor: " + newActorId);
+					result = true;
+				}
+				keys.close();
+			} else {
+			}
+			conn.commit();
+			stmt.close();
+			return result;
+		} catch (SQLException sqle) {
+			sqle.printStackTrace();
+			if (conn != null) {
+				try {
+					conn.rollback();
+				} catch (SQLException sqle2) {
+					System.err.println("Error trying to rollback");
+				}
+			}
+			conn.close();
+			throw new RuntimeException("Error inserting film_actor ");
+			
+		}
+	}
 
 	public PreparedStatement setUp(int id, Connection conn, String sql) throws SQLException {
 		PreparedStatement stmt = conn.prepareStatement(sql);

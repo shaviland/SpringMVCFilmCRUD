@@ -31,4 +31,6 @@ public interface FilmDAO {
 	public boolean deleteActorById(int actorId);
 	
 	public Actor updateActor(int actorId, Actor actor);
+	
+	public boolean addActorIntoFilm(int actorID, int filmID) throws SQLException;
 }
