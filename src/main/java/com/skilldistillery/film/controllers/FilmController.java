@@ -137,7 +137,7 @@ public class FilmController {
         	mv.setViewName("WEB-INF/film-updated-results.jsp");
         } else {
             mv.addObject("film", updatedFilm);
-            mv.setViewName("WEB-INF/not-updated.jsp");
+            mv.setViewName("WEB-INF/results.jsp");
         }
         return mv;
     }
