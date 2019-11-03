@@ -25,13 +25,8 @@ public interface FilmDAO {
 	public boolean deleteFilmById(int filmId);
 
 	public Film updateFilm(int filmId, Film film);
-<<<<<<< HEAD
 
 	public Actor createActor(Actor actor) throws SQLException;
-
-=======
 	
-	public Actor createActor(Actor actor) throws SQLException;
->>>>>>> 910c0a9156f49070129cc99d726e6de4e5797537
 	public Actor updateActor(int actorId, Actor actor);
 }
