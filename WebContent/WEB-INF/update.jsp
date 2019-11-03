@@ -78,8 +78,9 @@
 
 		<form:errors path="specialFeatures" />
 		<br />
+		<input type="hidden" name="filmID" value="${oldFilm.id}" /> 
 		<input type="submit" value="Update Film" />
-		<input type="hidden" name="filmID" value="${filmID}" />
+		
 	</form:form>
 </body>
 </html>
