@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.skilldistillery.film.dao.FilmDAO;
+import com.skilldistillery.film.entities.Actor;
 import com.skilldistillery.film.entities.Film;
 
 @Controller
@@ -51,16 +52,16 @@ public class FilmController {
 	@RequestMapping(path = "createActor.do", method = RequestMethod.GET)
 	public ModelAndView goToCreateActor(@Valid Actor actor) {
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("WEB-INF/createActor.jsp");
+		mv.setViewName("WEB-INF/create-actor.jsp");
 		return mv;
 	}
 	
 	@RequestMapping(path = "createdActor.do", method = RequestMethod.POST)
 	public ModelAndView goToCreatedActor(@Valid Actor actor) throws SQLException {
 		ModelAndView mv = new ModelAndView();
-		Film newFilm = filmDAO.createFilm(film);
-		mv.addObject("film", newFilm);
-		mv.setViewName("WEB-INF/results.jsp");
+		Actor newActor = filmDAO.createActor(actor);
+		mv.addObject("actor", newActor);
+		mv.setViewName("WEB-INF/actor-results.jsp");
 		return mv;
 	}
 
@@ -93,9 +94,13 @@ public class FilmController {
 	@RequestMapping(path = "getFilmByID.do", params = "filmID", method = RequestMethod.GET)
 	public ModelAndView getFilmByID(int filmID) {
 
+		ModelAndView mv = new ModelAndView();
+		if(filmID < 1) {
+			mv.setViewName("WEB-INF/not-found.jsp");
+			return mv;
+		}
 		System.out.println(filmID);
 		Film film = filmDAO.findFilmById(filmID);
-		ModelAndView mv = new ModelAndView();
 		if (film == null) {
 			mv.setViewName("notFound.do");
 			return mv;
