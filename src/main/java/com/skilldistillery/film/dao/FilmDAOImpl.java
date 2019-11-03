@@ -410,39 +410,39 @@ public class FilmDAOImpl implements FilmDAO {
 	
 	@Override
 	public boolean deleteActorById(int actorId) {
-		boolean filmDeleted = false;
-//		Film film = findFilmById(filmId);
-//		Connection conn = null;
-//
-//		try {
-//			conn = DriverManager.getConnection(URL, user, password);
-//			conn.setAutoCommit(false);
-//			String sql = "DELETE FROM film WHERE film.id = ?";
-//			PreparedStatement stmt = conn.prepareStatement(sql);
-//			stmt.setInt(1, film.getId());
-//			int updateCount = stmt.executeUpdate();
-//			System.out.println("Deleted (" + updateCount + ") film:" + film.getTitle());
-//			conn.commit();
-//
-//		} catch (SQLException sqle) {
-//			sqle.printStackTrace();
-//			if (conn != null) {
-//				try {
-//					conn.rollback();
-//				} catch (SQLException sqle2) {
-//					System.err.println("Error trying to rollback");
-//				}
-//			}
-//		}
-//
-//		Film findFilm = findFilmById(filmId);
-//		if (findFilm == null) {
-//			filmDeleted = false;
-//		} else {
-//			filmDeleted = true;
-//		}
-//
-		return filmDeleted;
+		boolean actorDeleted = false;
+		Actor actor = findActorById(actorId);
+		Connection conn = null;
+
+		try {
+			conn = DriverManager.getConnection(URL, user, password);
+			conn.setAutoCommit(false);
+			String sql = "DELETE FROM actor WHERE actor.id = ?";
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			stmt.setInt(1, actor.getId());
+			int updateCount = stmt.executeUpdate();
+			System.out.println("Deleted (" + updateCount + ") actor:" + actor.getFirstName() + " " + actor.getLastName());
+			conn.commit();
+
+		} catch (SQLException sqle) {
+			sqle.printStackTrace();
+			if (conn != null) {
+				try {
+					conn.rollback();
+				} catch (SQLException sqle2) {
+					System.err.println("Error trying to rollback");
+				}
+			}
+		}
+
+		Actor findActor = findActorById(actorId);
+		if (findActor == null) {
+			actorDeleted = false;
+		} else {
+			actorDeleted = true;
+		}
+
+		return actorDeleted;
 	}
 	
 	@Override
