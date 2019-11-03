@@ -30,5 +30,5 @@ public interface FilmDAO {
 	
 	public Actor createActor(Actor actor) throws SQLException;
 
-	public Actor updateActor(int actorID, @Valid Actor actor);
+
 }
