@@ -4,12 +4,13 @@ import java.util.List;
 import java.util.Map;
 
 import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 public class Film {
 	@NotNull
 //	F I E L D S 
-
+	@Min(0)
 	private int id;
 	private String title;
 	private String description;
