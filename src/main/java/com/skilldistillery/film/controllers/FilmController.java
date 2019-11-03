@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.skilldistillery.film.dao.FilmDAO;
+import com.skilldistillery.film.entities.Actor;
 import com.skilldistillery.film.entities.Film;
 
 @Controller
@@ -90,19 +91,19 @@ public class FilmController {
 		return mv;
 	}
 	
-	@RequestMapping(path = "getActorByID.do", params = "filmID", method = RequestMethod.GET)
-	public ModelAndView getFilmByID(int filmID) {
+	@RequestMapping(path = "getActorByID.do", params = "actorID", method = RequestMethod.GET)
+	public ModelAndView getActorByID(int actorID) {
 		
-		System.out.println(filmID);
-		Film film = filmDAO.findFilmById(filmID);
+		System.out.println(actorID);
+		Actor actor = filmDAO.findActorById(actorID);
 		ModelAndView mv = new ModelAndView();
-		if (film == null) {
+		if (actor == null) {
 			mv.setViewName("notFound.do");
 			return mv;
 		}
-		System.out.println(film);
-		mv.addObject("film", film);
-		mv.setViewName("WEB-INF/results.jsp");
+		System.out.println(actor);
+		mv.addObject("actor", actor);
+		mv.setViewName("WEB-INF/results-actor.jsp");
 		return mv;
 	}
 
@@ -158,13 +159,13 @@ public class FilmController {
 	@RequestMapping(path = "updateActor.do", params = "actorID", method = RequestMethod.POST)
 	public ModelAndView updateActor(@Valid Actor actor, int actorID) {
 		ModelAndView mv = new ModelAndView();
-		Actor updatedActor = filmDAO.updateActor(actorID, actor);
-		if (!actor.equals(updatedActor)) {
-			mv.setViewName("WEB-INF/not-updated.jsp");
-		} else {
-			mv.addObject("actor", updatedActor);
-			mv.setViewName("WEB-INF/film-updated-results.jsp");
-		}
+//		Actor updatedActor = filmDAO.updateActor(actorID, actor);
+//		if (!actor.equals(updatedActor)) {
+//			mv.setViewName("WEB-INF/not-updated.jsp");
+//		} else {
+//			mv.addObject("actor", updatedActor);
+//			mv.setViewName("WEB-INF/film-updated-results.jsp");
+//		}
 		return mv;
 	}
 	
