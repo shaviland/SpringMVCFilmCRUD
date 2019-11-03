@@ -69,7 +69,7 @@ public class FilmController {
     @RequestMapping(path = "deleteFilm.do", params = "filmID", method = RequestMethod.GET)
     public ModelAndView deleteFilm(int filmID) {
         ModelAndView mv = new ModelAndView();
-        if (filmDAO.deleteFilmById(filmID) == true) {
+        if (!filmDAO.deleteFilmById(filmID) == true) {
             mv.setViewName("WEB-INF/deleted.jsp");
         } else {
             mv.setViewName("notDeleted.do");
@@ -133,7 +133,8 @@ public class FilmController {
         ModelAndView mv = new ModelAndView();
         Film updatedFilm = filmDAO.updateFilm(filmID, film);
         if (film.equals(updatedFilm)) {
-        	mv.setViewName("WEB-INF/results.jsp");
+        	mv.addObject("oldFilmID", filmID);
+        	mv.setViewName("WEB-INF/film-updated-results.jsp");
         } else {
             mv.addObject("film", updatedFilm);
             mv.setViewName("WEB-INF/not-updated.jsp");
