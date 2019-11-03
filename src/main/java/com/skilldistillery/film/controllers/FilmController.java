@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.skilldistillery.film.dao.FilmDAO;
+import com.skilldistillery.film.entities.Actor;
 import com.skilldistillery.film.entities.Film;
 
 @Controller
@@ -128,5 +129,30 @@ public class FilmController {
 		}
 		return mv;
 	}
+	
+	@RequestMapping(path = "goToUpdateActor.do", params = "actorID", method = RequestMethod.GET)
+	public ModelAndView goToUpdateActor(@Valid Actor actor, int actorID) {
+		ModelAndView mv = new ModelAndView();
+		Actor oldActor = filmDAO.findActorById(actorID);
+		mv.addObject("actorID", actorID);
+		mv.addObject("oldActor", oldActor);
+		mv.setViewName("WEB-INF/update-actor.jsp");
+		return mv;
+	}
+	
+	@RequestMapping(path = "updateActor.do", params = "actorID", method = RequestMethod.POST)
+	public ModelAndView updateActor(@Valid Actor actor, int actorID) {
+		ModelAndView mv = new ModelAndView();
+//		Actor updatedActor = filmDAO.updateActor(actorID, actor);
+//		if (!actor.equals(updatedActor)) {
+//			mv.setViewName("WEB-INF/not-updated.jsp");
+//		} else {
+//			mv.addObject("actor", updatedActor);
+//			mv.setViewName("WEB-INF/film-updated-results.jsp");
+//		}
+		return mv;
+	}
+	
+	
 
 }
