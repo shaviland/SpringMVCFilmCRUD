@@ -11,15 +11,15 @@
 <body>
 	<form:form action="updateFilm.do" method="POST" modelAttribute="film">
 		<form:label path="title">Title:</form:label>
-		<form:input path="title" default = "${film.title}" placeholder="${film.title}" value='${film.title}'/>
+		<form:input path="title" default = "${oldFilm.title}" placeholder="${oldFilm.title}" value="${oldFilm.title }"/>
 		<form:errors path="title" />
 		<br />
 		<form:label path="description">Description:</form:label>
-		<form:input path="description" />
+		<form:input path="description" default = "${oldFilm.description}" placeholder="${oldFilm.description}" value="${oldFilm.description }"/>
 		<form:errors path="description" />
 		<br />
 		<form:label path="releaseYear">Release Year:</form:label>
-		<form:input path="releaseYear" />
+		<form:input path="releaseYear" default = "${oldFilm.releaseYear}" placeholder="${oldFilm.releaseYear}" value="${oldFilm.releaseYear }"/>
 		<form:errors path="releaseYear" />
 		<br />
 		<form:label path="languageId">Language:</form:label>
@@ -46,15 +46,15 @@
 		<form:errors path="rentalDuration" />
 		<br />
 		<form:label path="rentalRate">Rental Rate:</form:label>
-		<form:input path="rentalRate" />
+		<form:input path="rentalRate" default = "${oldFilm.rentalRate}" placeholder="${oldFilm.rentalRate}" value="${oldFilm.rentalRate }"/>
 		<form:errors path="rentalRate" />
 		<br />
 		<form:label path="length">Length:</form:label>
-		<form:input path="length" />
+		<form:input path="length" default = "${oldFilm.length}" placeholder="${oldFilm.length}" value="${oldFilm.length }"/>
 		<form:errors path="length" />
 		<br />
 		<form:label path="replacementCost">Replacement Cost:</form:label>
-		<form:input path="replacementCost" />
+		<form:input path="replacementCost" default = "${oldFilm.replacementCost}" placeholder="${oldFilm.replacementCost}" value="${oldFilm.replacementCost }"/>
 		<form:errors path="replacementCost" />
 		<br />
 		<form:label path="rating">Rating:</form:label>
@@ -72,7 +72,7 @@
 			<input type="checkbox" name="specialFeatures" value="Commentaries">Commentaries<br>
 			<input type="checkbox" name="specialFeatures" value="Deleted Scenes">Deleted
 			Scenes<br>
-			<inputtype ="checkbox" name="specialFeatures"
+			<input type ="checkbox" name="specialFeatures"
 				value="Behind the Scenes">Behind the Scenes<br>
 		</div>
 
