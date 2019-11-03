@@ -4,6 +4,8 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
+import javax.validation.Valid;
+
 import com.skilldistillery.film.entities.Actor;
 import com.skilldistillery.film.entities.Film;
 
@@ -27,4 +29,6 @@ public interface FilmDAO {
 	public Film updateFilm(int filmId, Film film);
 	
 	public Actor createActor(Actor actor) throws SQLException;
+
+	public Actor updateActor(int actorID, @Valid Actor actor);
 }
