@@ -10,9 +10,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.skilldistillery.film.dao.FilmDAO;
+import com.skilldistillery.film.entities.Actor;
 import com.skilldistillery.film.entities.Film;
 
 @Controller
@@ -52,16 +52,16 @@ public class FilmController {
 	@RequestMapping(path = "createActor.do", method = RequestMethod.GET)
 	public ModelAndView goToCreateActor(@Valid Actor actor) {
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("WEB-INF/createActor.jsp");
+		mv.setViewName("WEB-INF/create-actor.jsp");
 		return mv;
 	}
 	
 	@RequestMapping(path = "createdActor.do", method = RequestMethod.POST)
 	public ModelAndView goToCreatedActor(@Valid Actor actor) throws SQLException {
 		ModelAndView mv = new ModelAndView();
-		Film newFilm = filmDAO.createFilm(film);
-		mv.addObject("film", newFilm);
-		mv.setViewName("WEB-INF/results.jsp");
+		Actor newActor = filmDAO.createActor(actor);
+		mv.addObject("actor", newActor);
+		mv.setViewName("WEB-INF/actor-results.jsp");
 		return mv;
 	}
 
