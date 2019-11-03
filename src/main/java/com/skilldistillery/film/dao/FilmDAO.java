@@ -29,6 +29,11 @@ public interface FilmDAO {
 	public Film updateFilm(int filmId, Film film);
 	
 	public Actor createActor(Actor actor) throws SQLException;
+<<<<<<< HEAD
 
 
+=======
+	
+	public Actor updateActor(int actorId, Actor actor);
+>>>>>>> f838c3bc86351ef3fd0c9dcdb0ca8be83442f994
 }

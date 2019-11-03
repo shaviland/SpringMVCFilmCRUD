@@ -48,6 +48,22 @@ public class FilmController {
 		mv.setViewName("WEB-INF/results.jsp");
 		return mv;
 	}
+	
+	@RequestMapping(path = "createActor.do", method = RequestMethod.GET)
+	public ModelAndView goToCreateActor(@Valid Actor actor) {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("WEB-INF/create-actor.jsp");
+		return mv;
+	}
+	
+	@RequestMapping(path = "createdActor.do", method = RequestMethod.POST)
+	public ModelAndView goToCreatedActor(@Valid Actor actor) throws SQLException {
+		ModelAndView mv = new ModelAndView();
+		Actor newActor = filmDAO.createActor(actor);
+		mv.addObject("actor", newActor);
+		mv.setViewName("WEB-INF/results-actor.jsp");
+		return mv;
+	}
 
 	@RequestMapping(path = "notDeleted.do", method = RequestMethod.GET)
 	public ModelAndView goToNotDeleted() {
@@ -107,6 +123,7 @@ public class FilmController {
 		return mv;
 	}
 
+	@RequestMapping(path = "goToUpdateFilm.do", params = "filmID", method = RequestMethod.GET)
 	public ModelAndView goToUpdateFilm(@Valid Film film, int filmID) {
 		ModelAndView mv = new ModelAndView();
 		Film oldFilm = filmDAO.findFilmById(filmID);
@@ -143,13 +160,13 @@ public class FilmController {
 	@RequestMapping(path = "updateActor.do", params = "actorID", method = RequestMethod.POST)
 	public ModelAndView updateActor(@Valid Actor actor, int actorID) {
 		ModelAndView mv = new ModelAndView();
-//		Actor updatedActor = filmDAO.updateActor(actorID, actor);
-//		if (!actor.equals(updatedActor)) {
-//			mv.setViewName("WEB-INF/not-updated.jsp");
-//		} else {
-//			mv.addObject("actor", updatedActor);
-//			mv.setViewName("WEB-INF/film-updated-results.jsp");
-//		}
+		Actor updatedActor = filmDAO.updateActor(actorID, actor);
+		if (!actor.equals(updatedActor)) {
+			mv.setViewName("WEB-INF/not-updated-actor.jsp");
+		} else {
+			mv.addObject("actor", updatedActor);
+			mv.setViewName("WEB-INF/actor-updated-results.jsp");
+		}
 		return mv;
 	}
 	

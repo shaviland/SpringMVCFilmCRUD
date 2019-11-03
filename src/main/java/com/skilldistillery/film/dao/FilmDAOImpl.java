@@ -407,6 +407,36 @@ public class FilmDAOImpl implements FilmDAO {
 		return film;
 	}
 
+	@Override
+	public Actor updateActor(int actorId, Actor actor) {
+		Connection conn = null;
+		try {
+			conn = DriverManager.getConnection(URL, user, password);
+			conn.setAutoCommit(false);
+			String sql = "UPDATE actor SET first_name=?, last_name=? " + "WHERE id = ?";
+
+			PreparedStatement stmt = conn.prepareStatement(sql);
+
+			stmt.setString(1, actor.getFirstName());
+			stmt.setString(2, actor.getLastName());
+			stmt.setInt(3, actorId);
+
+			int updateCount = stmt.executeUpdate();
+			conn.commit();
+		} catch (SQLException sqle) {
+			sqle.printStackTrace();
+			if (conn != null) {
+				try {
+					conn.rollback();
+				} catch (SQLException sqle2) {
+					System.err.println("Error trying to rollback");
+				}
+			}
+			return actor;
+		}
+		return actor;
+	}
+
 	public PreparedStatement setUp(int id, Connection conn, String sql) throws SQLException {
 		PreparedStatement stmt = conn.prepareStatement(sql);
 		stmt.setInt(1, id);
