@@ -25,6 +25,8 @@
 			<div class="col-sm-4">
 				<form action="getFilmByID.do" method="GET">
 					<p>Look up film by ID</p>
+					<input type="number" required value = "" name="filmID" placeholder="Enter film ID"
+						 /> <input type="submit" value="Search" />
 					<input type="number" name="filmID" placeholder="Enter film ID"
 						default="0" /> <input type="submit" value="Search" />
 				</form>
@@ -32,7 +34,7 @@
 			<div class="col-sm-4">
 				<form action="findFilmByKeyword.do" method="GET">
 					<p>Look up film by Keyword</p>
-					<input type="input" name="filmKey" default="default"
+					<input type="text" name="filmKey" required value = ""
 						placeholder="Enter Keyword" /> <input type="submit"
 						value="Search" />
 				</form>
@@ -41,7 +43,7 @@
 				<form action="getActorByID.do" method="GET">
 					<p>Look up actor by ID</p>
 					<input type="number" name="actorID" placeholder="Enter film ID"
-						value="0" /> <input type="submit" value="Search" />
+						required value = "" /> <input type="submit" value="Search" />
 				</form>
 			</div>
 		</div>
