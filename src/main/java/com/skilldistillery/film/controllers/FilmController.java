@@ -48,6 +48,22 @@ public class FilmController {
 		mv.setViewName("WEB-INF/results.jsp");
 		return mv;
 	}
+	
+	@RequestMapping(path = "createActor.do", method = RequestMethod.GET)
+	public ModelAndView goToCreateActor(@Valid Actor actor) {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("WEB-INF/createActor.jsp");
+		return mv;
+	}
+	
+	@RequestMapping(path = "createdActor.do", method = RequestMethod.POST)
+	public ModelAndView goToCreatedActor(@Valid Actor actor) throws SQLException {
+		ModelAndView mv = new ModelAndView();
+		Film newFilm = filmDAO.createFilm(film);
+		mv.addObject("film", newFilm);
+		mv.setViewName("WEB-INF/results.jsp");
+		return mv;
+	}
 
 	@RequestMapping(path = "notDeleted.do", method = RequestMethod.GET)
 	public ModelAndView goToNotDeleted() {
