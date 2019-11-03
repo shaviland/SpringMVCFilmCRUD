@@ -6,10 +6,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Film Query Results</title>
+<title>Delete Results</title>
 </head>
 <body>
-	<h1>${film.title}</h1>
+	<h1></h1>
 	<h3>HAS NOT BEEN DELETED</h3>
 	
 		<form action="index.html" method="GET">

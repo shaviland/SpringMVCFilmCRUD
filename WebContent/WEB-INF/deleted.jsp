@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Film Query Results</title>
+<title>Delete Results</title>
 </head>
 <body>
 	<h1>${film.title}</h1>

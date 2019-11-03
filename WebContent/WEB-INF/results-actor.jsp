@@ -21,14 +21,14 @@
 		</tr>
 	</table>
 
-<%-- 	<form action="deleteFilm.do" method="GET">
-		<input type="hidden" name="filmID" value="${film.id}" /> <input
-			type="submit" value="DELETE FILM" />
-	</form> --%>
+	<form action="deleteActor.do" method="GET">
+		<input type="hidden" name="actorID" value="${actor.id}" /> <input
+			type="submit" value="DELETE ACTOR" />
+	</form>
 	<form action="goToUpdateActor.do" method="GET">
-		<input type="hidden" name="actorID" value="${actor.id}" /> 
-		<input type="submit" value="UPDATE ACTOR" />
-	</form> 
+		<input type="hidden" name="actorID" value="${actor.id}" /> <input
+			type="submit" value="UPDATE ACTOR" />
+	</form>
 	<form action="index.html" method="GET">
 		<input type="submit" value="Return to Home Page" />
 	</form>
