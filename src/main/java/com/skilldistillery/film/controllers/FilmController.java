@@ -133,10 +133,10 @@ public class FilmController {
         ModelAndView mv = new ModelAndView();
         Film updatedFilm = filmDAO.updateFilm(filmID, film);
         if (film.equals(updatedFilm)) {
-        	mv.setViewName("WEB-INF/results.jsp");
+            mv.setViewName("WEB-INF/not-updated.jsp");
         } else {
             mv.addObject("film", updatedFilm);
-            mv.setViewName("WEB-INF/not-updated.jsp");
+            mv.setViewName("WEB-INF/results.jsp");
         }
         return mv;
     }
