@@ -35,7 +35,7 @@ public class FilmController {
         ModelAndView mv = new ModelAndView();
         Film newFilm = filmDAO.createFilm(film);
         mv.addObject("film", newFilm);
-        mv.setViewName("WEB-INF/results.jsp");
+        mv.setViewName("WEB-INF/results-film.jsp");
         return mv;
     }
     
@@ -98,7 +98,7 @@ public class FilmController {
         }
         System.out.println(film);
         mv.addObject("film", film);
-        mv.setViewName("WEB-INF/results.jsp");
+        mv.setViewName("WEB-INF/results-film.jsp");
         return mv;
     }
     
@@ -148,7 +148,7 @@ public class FilmController {
         	mv.setViewName("WEB-INF/film-updated-results.jsp");
         } else {
             mv.addObject("film", updatedFilm);
-            mv.setViewName("WEB-INF/results.jsp");
+            mv.setViewName("WEB-INF/results-film.jsp");
         }
         return mv;
     }

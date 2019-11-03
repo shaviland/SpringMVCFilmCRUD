@@ -13,17 +13,23 @@
 	<c:forEach items="${films}" var="film">
 		<table>
 			<tr>
-				<td>Title: ${film.title} [</td>
-				<td>ID: ${film.id}]</td>
+				<td>Title: ${film.title}</td>
+			</tr>
+			<tr>
+				<td>ID: [${film.id}]</td>
+
+			</tr>
+			<tr>
+				<td>Description ${film.description }</td>
 			</tr>
 		</table>
 
 	</c:forEach>
 	<form action="getFilmByID.do" method="GET">
-            <p>Film Details by ID</p>
-            <input type="input" name="filmID" placeholder="Enter film ID"/> 
-            <input type="submit" value="Search" />
-        </form>
+		<p>Search Film Details by ID</p>
+		<input type="number" name="filmID" placeholder="Enter film ID" /> <input
+			type="submit" value="Search" />
+	</form>
 	<form action="index.html" method="GET">
 		<input type="submit" value="Return to Home Page" />
 	</form>

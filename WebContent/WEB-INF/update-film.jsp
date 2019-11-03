@@ -23,7 +23,7 @@
 		<form:errors path="releaseYear" />
 		<br />
 		<form:label path="languageId">Language:</form:label>
-		<form:select path="languageId">
+		<form:select path="languageId" default = "${oldFilm.languageId}" placeholder="${oldFilm.languageId}" value="${oldFilm.languageId }">
 			<option value="1">English</option>
 			<option value="2">Italian</option>
 			<option value="3">Japanese</option>
@@ -34,7 +34,7 @@
 		<form:errors path="languageId" />
 		<br />
 		<form:label path="rentalDuration">Rental Duration:</form:label>
-		<form:select path="rentalDuration">
+		<form:select path="rentalDuration" default = "${oldFilm.rentalDuration}" placeholder="${oldFilm.rentalDuration}" value="${oldFilm.rentalDuration }">
 			<option value="1">1 Day</option>
 			<option value="2">2 Days</option>
 			<option value="3">3 Days</option>
