@@ -76,6 +76,17 @@ public class FilmController {
         }
         return mv;
     }
+    
+    @RequestMapping(path = "deleteActor.do", params = "actorID", method = RequestMethod.GET)
+    public ModelAndView deleteActor(int actorID) {
+    	ModelAndView mv = new ModelAndView();
+    	if (!filmDAO.deleteActorById(actorID) == true) {
+    		mv.setViewName("WEB-INF/deleted.jsp");
+    	} else {
+    		mv.setViewName("notDeleted.do");
+    	}
+    	return mv;
+    }
     @RequestMapping(path = "getFilmByID.do", params = "filmID", method = RequestMethod.GET)
     public ModelAndView getFilmByID(int filmID) {
         System.out.println(filmID);
