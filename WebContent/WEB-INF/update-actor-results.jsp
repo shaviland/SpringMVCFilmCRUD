@@ -6,6 +6,16 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<link href="/css/style.css" rel="stylesheet" type="text/css">
 <title>Actor Created Results</title>
 </head>
 <body>
@@ -21,14 +31,19 @@
 		</tr>
 	</table>
 
-<%-- 	<form action="deleteFilm.do" method="GET">
-		<input type="hidden" name="filmID" value="${film.id}" /> <input
-			type="submit" value="DELETE FILM" />
-	</form> --%>
+	<form action="deleteActor.do" method="GET">
+		<input type="hidden" name="actorID" value="${actor.id}" class="btn btn-outline-dark"/> <input
+			type="submit" value="DELETE ACTOR" />
+	</form>
 	<form action="goToUpdateActor.do" method="GET">
+		<input type="hidden" name="actorID" value="${actor.id}" /> <input
+			type="submit" value="UPDATE ACTOR" />
+	</form>
+	<form action="addActorToFilm.do" method="GET">
 		<input type="hidden" name="actorID" value="${actor.id}" /> 
-		<input type="submit" value="UPDATE ACTOR" />
-	</form> 
+		<input type="number" name="filmID" />
+		<input type="submit" value="Add Actor to Film: (Enter Film ID)" />
+	</form>
 	<form action="index.html" method="GET">
 		<input type="submit" value="Return to Home Page" />
 	</form>

@@ -16,35 +16,14 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <link href="/css/style.css" rel="stylesheet" type="text/css">
-<title>Actor Created Results</title>
+<title>Delete Results</title>
 </head>
 <body>
-	<h1>Actor Query Results:</h1>
-	<table>
-		<tr>
-			<td>First Name:</td>
-			<td>${actor.firstName}</td>
-		</tr>
-		<tr>
-			<td>Last Name:</td>
-			<td>${actor.lastName}</td>
-		</tr>
-	</table>
+	<h1>${film.title}</h1>
+	<h3>HAS BEEN DELETED</h3>
+	
+		<form action="index.html" method="GET">
 
-	<form action="deleteActor.do" method="GET">
-		<input type="hidden" name="actorID" value="${actor.id}" class="btn btn-outline-dark"/> <input
-			type="submit" value="DELETE ACTOR" />
-	</form>
-	<form action="goToUpdateActor.do" method="GET">
-		<input type="hidden" name="actorID" value="${actor.id}" /> <input
-			type="submit" value="UPDATE ACTOR" />
-	</form>
-	<form action="addActorToFilm.do" method="GET">
-		<input type="hidden" name="actorID" value="${actor.id}" /> 
-		<input type="number" name="filmID" />
-		<input type="submit" value="Add Actor to Film: (Enter Film ID)" />
-	</form>
-	<form action="index.html" method="GET">
 		<input type="submit" value="Return to Home Page" />
 	</form>
 </body>
