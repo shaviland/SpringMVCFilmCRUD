@@ -1,12 +1,16 @@
 package com.skilldistillery.film.controllers;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
+
 import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+
 import com.skilldistillery.film.dao.FilmDAO;
 import com.skilldistillery.film.entities.Actor;
 import com.skilldistillery.film.entities.Film;
@@ -203,8 +207,8 @@ public class FilmController {
     @RequestMapping(path = "listInventoryItems.do", params = "filmID", method = RequestMethod.GET)
     public ModelAndView listInventoryItems(int filmID) throws SQLException {
     	ModelAndView mv = new ModelAndView();
-    	List<String> inventoryItems = filmDAO.listInventoryItems(filmID);
-    	mv.addObject("inventoryItems", inventoryItems);
+    	Map<Integer, String> copies = filmDAO.listInventoryItems(filmID);
+    	mv.addObject("copies", copies);
     	mv.setViewName("WEB-INF/list-inventory-items.jsp");
     	return mv;
     }

@@ -27,14 +27,14 @@ public interface FilmDAO {
 	public Film updateFilm(int filmId, Film film);
 
 	public Actor createActor(Actor actor) throws SQLException;
-	
+
 	public boolean deleteActorById(int actorId);
-	
+
 	public Actor updateActor(int actorId, Actor actor);
-	
+
 	public boolean addActorIntoFilm(int actorID, int filmID) throws SQLException;
 
 	boolean removeActorFromFilm(int actorID, int filmID) throws SQLException;
-	
-	public List<String> listInventoryItems(int filmID) throws SQLException;
+
+	public Map<Integer, String> listInventoryItems(int filmID) throws SQLException;
 }
