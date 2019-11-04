@@ -30,11 +30,6 @@
 				<td>ID: ${film.id}</td>
 			</tr>
 			<tr>
-				<td><c:out value="${copy.key }"/></td>
-				<td><c:out value="${copy.value }"/></td>
-
-			</tr>
-			<tr>
 				<td>Description ${film.description }</td>
 			</tr>
 		</table>
