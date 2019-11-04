@@ -26,11 +26,11 @@
 	</div>
 	<form:form action="createdActor.do" method="POST" modelAttribute="actor">
 		<form:label path="firstName">First Name:</form:label>
-		<form:input path="firstName" />
+		<form:input path="firstName" required="required"/>
 		<form:errors path="firstName" />
 		<br />
 		<form:label path="lastName">Last Name:</form:label>
-		<form:input path="lastName" />
+		<form:input path="lastName" required="required"/>
 		<form:errors path="lastName" />
 		<br />
 		<div class="container">
