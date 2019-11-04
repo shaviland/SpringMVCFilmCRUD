@@ -24,7 +24,7 @@
 	<c:forEach items="${copies}" var="copy">
 		<table>
 			<tr>
-				<td>Item ID: [${copy.key}]</td>
+				<td>Inventory Item ID: [${copy.key}]</td>
 				<td>Condition: ${copy.value}</td>
 			</tr>
 			<tr>
