@@ -1,9 +1,12 @@
 package com.skilldistillery.film.entities;
 
+import javax.validation.constraints.Min;
+
 public class Actor {
 	
 //	F I E L D S
 	
+	@Min(0)
 	private int id;
 	private String firstName;
 	private String lastName;

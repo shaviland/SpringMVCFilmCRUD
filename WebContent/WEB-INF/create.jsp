@@ -61,7 +61,7 @@
 		<form:errors path="rentalDuration" />
 		<br />
 		<form:label path="rentalRate">Rental Rate:</form:label>
-		<form:input path="rentalRate" type="number"/>
+		<form:input path="rentalRate" type="double"/>
 		<form:errors path="rentalRate" />
 		<br />
 		<form:label path="length">Length:</form:label>
@@ -69,7 +69,7 @@
 		<form:errors path="length" />
 		<br />
 		<form:label path="replacementCost">Replacement Cost:</form:label>
-		<form:input path="replacementCost" type="number"/>
+		<form:input path="replacementCost" type="double"/>
 		<form:errors path="replacementCost" />
 		<br />
 		<form:label path="rating">Rating:</form:label>

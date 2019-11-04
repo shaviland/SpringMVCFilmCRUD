@@ -284,6 +284,7 @@ public class FilmDAOImpl implements FilmDAO {
 				}
 			}
 			conn.close();
+			film = null;
 			throw new RuntimeException("Error inserting film " + film);
 
 		}
