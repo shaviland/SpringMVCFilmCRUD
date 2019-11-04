@@ -44,6 +44,11 @@
 		<input type="number" name="filmID" min="1"/>
 		<input type="submit" class="btn btn-outline-light" value="Add Actor to Film: (Enter Film ID)" />
 	</form>
+	<form action="removeActorFromFilm.do" method="GET">
+		<input type="hidden" name="actorID" value="${actor.id}" /> 
+		<input type="number" name="filmID" min="1"/>
+		<input type="submit" class="btn btn-outline-light" value="Remove Actor from Film: (Enter Film ID)" />
+	</form>
 	<div class="container">
 	<form action="index.html" method="GET">
 		<input type="submit"  class="btn btn-outline-light" value="Return to Home Page" />

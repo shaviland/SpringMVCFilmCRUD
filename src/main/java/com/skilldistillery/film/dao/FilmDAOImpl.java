@@ -521,7 +521,7 @@ public class FilmDAOImpl implements FilmDAO {
 						result = true;
 					}
 					keys.close();
-				} 
+				}
 				conn.commit();
 				existingStmt.close();
 				existingResults.close();
@@ -541,8 +541,73 @@ public class FilmDAOImpl implements FilmDAO {
 			conn.close();
 			throw new RuntimeException("Error inserting film_actor ");
 		}
+
+		return result;
+	}
+
+	@Override
+	public boolean removeActorFromFilm(int actorID, int filmID) throws SQLException {
+		Connection conn = null;
+		List<Integer> filmIDs = new ArrayList<>();
+		boolean result = false;
+		try {
+			conn = DriverManager.getConnection(URL, user, password);
+			conn.setAutoCommit(false);
+			String duplicateSql = "SELECT film_id FROM film_actor WHERE actor_id = ?";
+			PreparedStatement duplicateStmt = conn.prepareStatement(duplicateSql);
+			duplicateStmt.setInt(1, actorID);
+			ResultSet duplicateResults = duplicateStmt.executeQuery();
+
+			while (duplicateResults.next()) {
+				if (filmID == duplicateResults.getInt("film_id")) {
+					try {
+						conn.setAutoCommit(false);
+						String sql = "DELETE FROM film_actor " +
+						"WHERE actor_id = ? AND film_id = ?";
+						PreparedStatement stmt = conn.prepareStatement(sql);
+						stmt.setInt(1, actorID);
+						stmt.setInt(2, filmID);
+						int updateCount = stmt.executeUpdate();
+						System.out.println("Deleted (" + updateCount + ") actor from film.");
+						if(updateCount == 1) {
+							result = true;
+						}
+						stmt.close();
+						
+					} catch (SQLException sqle) {
+						sqle.printStackTrace();
+						if (conn != null) {
+							try {
+								conn.rollback();
+							} catch (SQLException sqle2) {
+								System.err.println("Error trying to rollback");
+							}
+						}
+						conn.close();
+					}
+				}
+			}
+			duplicateStmt.close();
+			duplicateResults.close();
+			
+
+			conn.commit();
+			conn.close();
+		} catch (SQLException sqle) {
+			sqle.printStackTrace();
+			if (conn != null) {
+				try {
+					conn.rollback();
+				} catch (SQLException sqle2) {
+					System.err.println("Error trying to rollback");
+				}
+			}
+			conn.close();
+			throw new RuntimeException("Error inserting film_actor ");
+		}
 		
 		return result;
+
 	}
 
 	public PreparedStatement setUp(int id, Connection conn, String sql) throws SQLException {

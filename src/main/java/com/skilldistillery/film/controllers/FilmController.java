@@ -177,13 +177,25 @@ public class FilmController {
     }
     
     @RequestMapping(path = "addActorToFilm.do", params = {"actorID", "filmID"}, method = RequestMethod.GET)
-    public ModelAndView updateActor(@Valid Actor actor, int actorID, int filmID) throws SQLException {
+    public ModelAndView addActorToFilm(@Valid Actor actor, int actorID, int filmID) throws SQLException {
     	ModelAndView mv = new ModelAndView();
     	boolean result = filmDAO.addActorIntoFilm(actorID, filmID);
     	if (!result) {
     		mv.setViewName("WEB-INF/actor-added-to-film-result.jsp");
     	} else {
     		mv.setViewName("WEB-INF/actor-not-added-to-film-result.jsp");
+    	}
+    	return mv;
+    }
+    
+    @RequestMapping(path = "removeActorFromFilm.do", params = {"actorID", "filmID"}, method = RequestMethod.GET)
+    public ModelAndView removeActorFromFilm(@Valid Actor actor, int actorID, int filmID) throws SQLException {
+    	ModelAndView mv = new ModelAndView();
+    	boolean result = filmDAO.removeActorFromFilm(actorID, filmID);
+    	if (result) {
+    		mv.setViewName("WEB-INF/actor-removed-from-film-result.jsp");
+    	} else {
+    		mv.setViewName("WEB-INF/actor-not-removed-from-film-result.jsp");
     	}
     	return mv;
     }
