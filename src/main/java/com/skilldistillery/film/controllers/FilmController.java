@@ -34,14 +34,9 @@ public class FilmController {
     public ModelAndView goToCreatedFilm(@Valid Film film) throws SQLException {
         ModelAndView mv = new ModelAndView();
         Film newFilm = filmDAO.createFilm(film);
-        if(newFilm == null) {
-        	mv.setViewName("WEB-INF/not-created-film.jsp");
-        	return mv;
-        } else {
         mv.addObject("film", newFilm);
         mv.setViewName("WEB-INF/results-film.jsp");
         return mv;
-        }
     }
     
     @RequestMapping(path = "createActor.do", method = RequestMethod.GET)
