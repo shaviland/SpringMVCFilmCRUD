@@ -14,7 +14,7 @@ public class Film {
 	private int id;
 	private String title;
 	private String description;
-	private Integer releaseYear;
+	private int releaseYear;
 	private int languageId;
 	private String language;
 	@Max(7)
@@ -30,7 +30,7 @@ public class Film {
 
 //	C O N S T R U C T O R 
 
-	public Film(int id, String title, Integer releaseYear, int languageId, String language, int length,
+	public Film(int id, String title, int releaseYear, int languageId, String language, int length,
 			double replacementCost) {
 		super();
 		this.id = id;
@@ -42,7 +42,7 @@ public class Film {
 		this.replacementCost = replacementCost;
 	}
 
-	public Film(String title, String description, Integer releaseYear, int languageId, int rentalDuration,
+	public Film(String title, String description, int releaseYear, int languageId, int rentalDuration,
 			double rentalRate, int length, double replacementCost, String rating, String specialFeatures) {
 		super();
 		this.title = title;
@@ -98,11 +98,11 @@ public class Film {
 		this.description = description;
 	}
 
-	public Integer getReleaseYear() {
+	public int getReleaseYear() {
 		return releaseYear;
 	}
 
-	public void setReleaseYear(Integer releaseYear) {
+	public void setReleaseYear(int releaseYear) {
 		this.releaseYear = releaseYear;
 	}
 
@@ -198,12 +198,16 @@ public class Film {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((actors == null) ? 0 : actors.hashCode());
+		result = prime * result + ((categories == null) ? 0 : categories.hashCode());
+		result = prime * result + ((copies == null) ? 0 : copies.hashCode());
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
 		result = prime * result + id;
+		result = prime * result + ((language == null) ? 0 : language.hashCode());
 		result = prime * result + languageId;
 		result = prime * result + length;
 		result = prime * result + ((rating == null) ? 0 : rating.hashCode());
-		result = prime * result + ((releaseYear == null) ? 0 : releaseYear.hashCode());
+		result = prime * result + releaseYear;
 		result = prime * result + rentalDuration;
 		long temp;
 		temp = Double.doubleToLongBits(rentalRate);
@@ -224,12 +228,32 @@ public class Film {
 		if (getClass() != obj.getClass())
 			return false;
 		Film other = (Film) obj;
+		if (actors == null) {
+			if (other.actors != null)
+				return false;
+		} else if (!actors.equals(other.actors))
+			return false;
+		if (categories == null) {
+			if (other.categories != null)
+				return false;
+		} else if (!categories.equals(other.categories))
+			return false;
+		if (copies == null) {
+			if (other.copies != null)
+				return false;
+		} else if (!copies.equals(other.copies))
+			return false;
 		if (description == null) {
 			if (other.description != null)
 				return false;
 		} else if (!description.equals(other.description))
 			return false;
 		if (id != other.id)
+			return false;
+		if (language == null) {
+			if (other.language != null)
+				return false;
+		} else if (!language.equals(other.language))
 			return false;
 		if (languageId != other.languageId)
 			return false;
@@ -240,10 +264,7 @@ public class Film {
 				return false;
 		} else if (!rating.equals(other.rating))
 			return false;
-		if (releaseYear == null) {
-			if (other.releaseYear != null)
-				return false;
-		} else if (!releaseYear.equals(other.releaseYear))
+		if (releaseYear != other.releaseYear)
 			return false;
 		if (rentalDuration != other.rentalDuration)
 			return false;
@@ -263,6 +284,8 @@ public class Film {
 			return false;
 		return true;
 	}
+
+
 
 	
 }

@@ -29,7 +29,7 @@
 		<form:errors path="description" />
 		<br />
 		<form:label path="releaseYear">Release Year:</form:label>
-		<form:input path="releaseYear" default = "${oldFilm.releaseYear}" placeholder="${oldFilm.releaseYear}" value="${oldFilm.releaseYear }"/>
+		<form:input path="releaseYear" type="number" default = "${oldFilm.releaseYear}" placeholder="${oldFilm.releaseYear}" value="${oldFilm.releaseYear }"/>
 		<form:errors path="releaseYear" />
 		<br />
 		<form:label path="languageId">Language:</form:label>
@@ -56,15 +56,15 @@
 		<form:errors path="rentalDuration" />
 		<br />
 		<form:label path="rentalRate">Rental Rate:</form:label>
-		<form:input path="rentalRate" default = "${oldFilm.rentalRate}" placeholder="${oldFilm.rentalRate}" value="${oldFilm.rentalRate }"/>
+		<form:input path="rentalRate" type="number" default = "${oldFilm.rentalRate}" placeholder="${oldFilm.rentalRate}" value="${oldFilm.rentalRate }"/>
 		<form:errors path="rentalRate" />
 		<br />
 		<form:label path="length">Length:</form:label>
-		<form:input path="length" default = "${oldFilm.length}" placeholder="${oldFilm.length}" value="${oldFilm.length }"/>
+		<form:input path="length" type="number" default = "${oldFilm.length}" placeholder="${oldFilm.length}" value="${oldFilm.length }"/>
 		<form:errors path="length" />
 		<br />
 		<form:label path="replacementCost">Replacement Cost:</form:label>
-		<form:input path="replacementCost" default = "${oldFilm.replacementCost}" placeholder="${oldFilm.replacementCost}" value="${oldFilm.replacementCost }"/>
+		<form:input path="replacementCost" type="number" default = "${oldFilm.replacementCost}" placeholder="${oldFilm.replacementCost}" value="${oldFilm.replacementCost }"/>
 		<form:errors path="replacementCost" />
 		<br />
 		<form:label path="rating">Rating:</form:label>

@@ -21,15 +21,15 @@
 <body>
 	<form:form action="createdFilm.do" method="POST" modelAttribute="film">
 		<form:label path="title">Title:</form:label>
-		<form:input path="title" />
+		<form:input path="title" required="required"/>
 		<form:errors path="title" />
 		<br />
 		<form:label path="description">Description:</form:label>
-		<form:input path="description" />
+		<form:input path="description" required="required"/>
 		<form:errors path="description" />
 		<br />
 		<form:label path="releaseYear">Release Year:</form:label>
-		<form:input path="releaseYear" />
+		<form:input type="number" path="releaseYear" required="required"/>
 		<form:errors path="releaseYear" />
 		<br />
 		<form:label path="languageId">Language:</form:label>
@@ -56,15 +56,15 @@
 		<form:errors path="rentalDuration" />
 		<br />
 		<form:label path="rentalRate">Rental Rate:</form:label>
-		<form:input path="rentalRate" />
+		<form:input path="rentalRate" type="number"/>
 		<form:errors path="rentalRate" />
 		<br />
 		<form:label path="length">Length:</form:label>
-		<form:input path="length" />
+		<form:input path="length" type="number" required="required"/>
 		<form:errors path="length" />
 		<br />
 		<form:label path="replacementCost">Replacement Cost:</form:label>
-		<form:input path="replacementCost" />
+		<form:input path="replacementCost" type="number"/>
 		<form:errors path="replacementCost" />
 		<br />
 		<form:label path="rating">Rating:</form:label>
