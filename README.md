@@ -18,4 +18,12 @@ A user can search for films by keyword/pattern in title or description. User is 
 ###Lessons Learned
 Learned to use prepared statements for the SQL inquiries because it gives added flexibility and protects agains SQL injection.
 
-When using request mapping the path and id in the index.html have to have correct syntax and matching paths. 
+When using request mapping, the path and id in the index.html have to have correct syntax and matching paths.
+
+Before performing any C.R.U.D methods, ensure the given data by the user meets requirements as to not corrupt or create errors with your database.
+
+Proper and descriptive naming conventions of files helps in being aware of the pathing and where the controller sends the user.
+
+Adding objects to ModelAndView is crucial in transferring data across multiple JSPs. Created paths to a model attribute is another way of transferring data across multiple JSPs.
+
+Understanding the relational mapping between form actions and the Controller class helps understand and control the flow of where the user goes. 
