@@ -108,7 +108,7 @@ public class FilmController {
         Actor actor = filmDAO.findActorById(actorID);
         ModelAndView mv = new ModelAndView();
         if (actor == null) {
-            mv.setViewName("notFound.do");
+            mv.setViewName("WEB-INF/not-found-actor.jsp");
             return mv;
         }
         System.out.println(actor);

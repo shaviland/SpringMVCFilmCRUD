@@ -44,8 +44,10 @@
 		<input type="number" name="filmID" />
 		<input type="submit" value="Add Actor to Film: (Enter Film ID)" />
 	</form>
+	<div class="container">
 	<form action="index.html" method="GET">
-		<input type="submit" value="Return to Home Page" />
+		<input type="submit" class="btn btn-outline-dark" value="Return to Home Page" />
 	</form>
+	</div>
 </body>
 </html>

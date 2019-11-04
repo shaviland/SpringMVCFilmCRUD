@@ -16,14 +16,15 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <link href="/css/style.css" rel="stylesheet" type="text/css">
-<title>Delete Results</title>
+<title>Actor Query Results</title>
 </head>
 <body>
-	<h3>ACTOR HAS BEEN DELETED</h3>
-	
+	<h1>ACTOR NOT FOUND</h1>
+	<div class="container">
 		<form action="index.html" method="GET">
 
 		<input type="submit" value="Return to Home Page" />
 	</form>
+	</div>
 </body>
 </html>

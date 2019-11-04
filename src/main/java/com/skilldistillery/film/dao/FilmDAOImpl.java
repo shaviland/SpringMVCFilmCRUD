@@ -419,9 +419,9 @@ public class FilmDAOImpl implements FilmDAO {
 			conn.setAutoCommit(false);
 			String sql = "DELETE FROM actor WHERE actor.id = ?";
 			PreparedStatement stmt = conn.prepareStatement(sql);
-			stmt.setInt(1, actor.getId());
+			stmt.setInt(1, actorId);
 			int updateCount = stmt.executeUpdate();
-			System.out.println("Deleted (" + updateCount + ") actor:" + actor.getFirstName() + " " + actor.getLastName());
+			System.out.println("Deleted (" + updateCount + ") actor.");
 			conn.commit();
 
 		} catch (SQLException sqle) {
@@ -483,6 +483,39 @@ public class FilmDAOImpl implements FilmDAO {
 		try {
 			conn = DriverManager.getConnection(URL, user, password);
 			conn.setAutoCommit(false);
+			String duplicateSql = "SELECT film_id FROM film_actor WHERE actor_id = ?";
+			PreparedStatement duplicateStmt = conn.prepareStatement(duplicateSql);
+			duplicateStmt.setInt(1, actorID);
+			ResultSet duplicateResults = duplicateStmt.executeQuery();
+			
+			while(duplicateResults.next()) {
+				if(filmID == duplicateResults.getInt("film_id")) {
+					duplicateStmt.close();
+					duplicateResults.close();
+					conn.close();
+					return true;
+				}
+			}
+			duplicateStmt.close();
+			duplicateResults.close();
+			
+			String existingSql = "SELECT id FROM film WHERE id = ?";
+			PreparedStatement existingStmt = conn.prepareStatement(existingSql);
+			existingStmt.setInt(1, filmID);
+			ResultSet existingResults = existingStmt.executeQuery();
+			
+			if(existingResults.getFetchSize() == 0) {
+					existingStmt.close();
+					existingResults.close();
+					conn.close();
+					return true;
+			}
+			existingStmt.close();
+			existingResults.close();
+			
+
+			
+			
 			String sql = "INSERT INTO film_actor (actor_id, film_id) " 
 			+ " VALUES (?, ?)";
 			PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -503,6 +536,7 @@ public class FilmDAOImpl implements FilmDAO {
 			}
 			conn.commit();
 			stmt.close();
+			conn.close();
 			return result;
 		} catch (SQLException sqle) {
 			sqle.printStackTrace();
