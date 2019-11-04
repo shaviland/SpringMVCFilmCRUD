@@ -610,9 +610,8 @@ public class FilmDAOImpl implements FilmDAO {
 
 	}
 	
-	public List<String> listInventoryItems(int filmID) throws SQLException{
-		List<String> inventoryItems = new ArrayList<>();
-		List<Integer> inventoryID = new ArrayList<>();
+	public Map<Integer, String> listInventoryItems(int filmID) throws SQLException{
+		Map<Integer, String> copies = new HashMap<>();
 		Connection conn = null;
 		try {
 			conn = DriverManager.getConnection(URL, user, password);
@@ -623,8 +622,11 @@ public class FilmDAOImpl implements FilmDAO {
 			ResultSet results = stmt.executeQuery();
 			
 			if(results.next()) {
-				inventoryItems.add(results.getString("media_condition"));
+				
+				copies.put(results.getInt("id"), results.getString("media_condition"));
+				
 			}
+			
 			
 			conn.commit();
 			conn.close();
@@ -638,10 +640,10 @@ public class FilmDAOImpl implements FilmDAO {
 				}
 			}
 			conn.close();
-			throw new RuntimeException("Error inserting film_actor ");
+			throw new RuntimeException("Error retrieving inventory items ");
 		}
 		
-		return inventoryItems;
+		return copies;
 
 	}
 

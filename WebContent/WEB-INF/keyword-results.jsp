@@ -26,7 +26,8 @@
 				<td>Title: ${film.title}</td>
 			</tr>
 			<tr>
-				<td>ID: [${film.id}]</td>
+				<td><c:out value="${copy.key }"/></td>
+				<td><c:out value="${copy.value }"/></td>
 
 			</tr>
 			<tr>

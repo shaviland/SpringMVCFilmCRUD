@@ -8,10 +8,11 @@
 </head>
 <body>
 
-	<c:forEach items="${inventoryItems}" var="invItem">
+	<c:forEach items="${copies}" var="copy">
 		<table>
 			<tr>
-				<td>${invItem}</td>
+				<td>${copy.key}</td>
+				<td>${copy.value}</td>
 			</tr>
 			<tr>
 		</table>
