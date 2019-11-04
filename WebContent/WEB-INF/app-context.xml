@@ -12,7 +12,7 @@
 
 	<context:component-scan
 		base-package="com.skilldistillery.film.controllers, com.skilldistillery.film.dao" />
-	<mvc:resources mapping="/resources/"
-		location="/resources/" />
+	<mvc:resources mapping="/css/"
+		location="/css/" />
 	<mvc:annotation-driven />
 </beans>
