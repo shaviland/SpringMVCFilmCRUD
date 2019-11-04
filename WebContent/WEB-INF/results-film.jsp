@@ -43,14 +43,18 @@
 			<td>Special Features:</td>
 			<td>${film.specialFeatures}</td>
 		</tr>
+		<c:if test="${not empty film.actors }">
 		<tr>
 			<td>Cast:</td>
 			<td>${film.actors}</td>
 		</tr>
+		</c:if>
+		<c:if test="${not empty film.categories}">
 		<tr>
 			<td>Categories:</td>
 			<td>${film.categories}</td>
 		</tr>
+		</c:if>
 	</table>
 
 	<form action="deleteFilm.do" method="GET">

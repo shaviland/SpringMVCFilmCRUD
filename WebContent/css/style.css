@@ -15,3 +15,7 @@ body {
 	background-color: gray;
 	color: gray; 
 }
+
+table {
+	border: 3px white;
+}
