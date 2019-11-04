@@ -22,8 +22,12 @@
 
 	<c:forEach items="${films}" var="film">
 		<table>
+			<br>
 			<tr>
 				<td>Title: ${film.title}</td>
+			</tr>
+			<tr>
+				<td>ID: ${film.id}</td>
 			</tr>
 			<tr>
 				<td><c:out value="${copy.key }"/></td>
