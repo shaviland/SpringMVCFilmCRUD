@@ -31,9 +31,10 @@
 		</tr>
 	</table>
 
+
 	<form action="addActorToFilm.do" method="GET">
 		<input type="hidden" name="actorID" value="${actor.id}" /> 
-		<input type="number" name="filmID" /><br>
+		<input type="number" name="filmID" min="1"/>
 		<input type="submit" class="btn btn-outline-light" value="Add Actor to Film: (Enter Film ID)" />
 	</form>
 	<form action="deleteActor.do" method="GET">
