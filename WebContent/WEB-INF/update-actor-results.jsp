@@ -31,6 +31,11 @@
 		</tr>
 	</table>
 
+	<form action="addActorToFilm.do" method="GET">
+		<input type="hidden" name="actorID" value="${actor.id}" /> 
+		<input type="number" name="filmID" /><br>
+		<input type="submit" class="btn btn-outline-light" value="Add Actor to Film: (Enter Film ID)" />
+	</form>
 	<form action="deleteActor.do" method="GET">
 		<input type="hidden" name="actorID" value="${actor.id}" class="btn btn-outline-dark"/> <input
 			type="submit" class="btn btn-outline-light" value="DELETE ACTOR" />
@@ -38,11 +43,6 @@
 	<form action="goToUpdateActor.do" method="GET">
 		<input type="hidden" name="actorID" value="${actor.id}" /> <input
 			type="submit" class="btn btn-outline-light" value="UPDATE ACTOR" />
-	</form>
-	<form action="addActorToFilm.do" method="GET">
-		<input type="hidden" name="actorID" value="${actor.id}" /> 
-		<input type="number" name="filmID" /><br>
-		<input type="submit" class="btn btn-outline-light" value="Add Actor to Film: (Enter Film ID)" />
 	</form>
 	<form action="index.html" method="GET">
 		<input type="submit" class="btn btn-outline-light" value="Return to Home Page" />
