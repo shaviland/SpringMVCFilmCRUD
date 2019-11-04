@@ -513,9 +513,6 @@ public class FilmDAOImpl implements FilmDAO {
 			existingStmt.close();
 			existingResults.close();
 			
-
-			
-			
 			String sql = "INSERT INTO film_actor (actor_id, film_id) " 
 			+ " VALUES (?, ?)";
 			PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
