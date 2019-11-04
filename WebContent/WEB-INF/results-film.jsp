@@ -65,6 +65,10 @@
 		<input type="hidden" name="filmID" value="${film.id}" /> 
 		<input type="submit" class="btn btn-outline-light" value="UPDATE FILM" />
 	</form>
+	<form action="listInventoryItems.do" method="GET">
+		<input type="hidden" name="filmID" value="${film.id}" /> 
+		<input type="hidden" class="btn btn-outline-light" value="Films in Inventory" />
+	</form>
 	<form action="index.html" method="GET">
 		<input type="submit" class="btn btn-outline-light" value="Return to Home Page" />
 	</form>

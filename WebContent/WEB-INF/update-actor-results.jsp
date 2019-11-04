@@ -34,8 +34,13 @@
 
 	<form action="addActorToFilm.do" method="GET">
 		<input type="hidden" name="actorID" value="${actor.id}" /> 
-		<input type="number" name="filmID" min="1"/><br>
+		<input type="number" name="filmID" min="1"/>
 		<input type="submit" class="btn btn-outline-light" value="Add Actor to Film: (Enter Film ID)" />
+	</form>
+		<form action="removeActorFromFilm.do" method="GET">
+		<input type="hidden" name="actorID" value="${actor.id}" /> 
+		<input type="number" name="filmID" min="1"/>
+		<input type="submit" class="btn btn-outline-light" value="Remove Actor from Film: (Enter Film ID)" />
 	</form>
 	<form action="deleteActor.do" method="GET">
 		<input type="hidden" name="actorID" value="${actor.id}" class="btn btn-outline-dark"/> <input

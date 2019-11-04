@@ -29,6 +29,10 @@
 			<td>Last Name:</td>
 			<td>${actor.lastName}</td>
 		</tr>
+		<tr>
+			<td>ID:</td>
+			<td>[${actor.id}]</td>
+		</tr>
 	</table>
 
 	<form action="deleteActor.do" method="GET">

@@ -200,5 +200,16 @@ public class FilmController {
     	return mv;
     }
     
+    @RequestMapping(path = "listInventoryItems.do", params = "filmID", method = RequestMethod.GET)
+    public ModelAndView listInventoryItems(int filmID) throws SQLException {
+    	ModelAndView mv = new ModelAndView();
+    	List<String> inventoryItems = filmDAO.listInventoryItems(filmID);
+    	mv.addObject("inventoryItems", inventoryItems);
+    	mv.setViewName("WEB-INF/list-inventory-items.jsp");
+    	return mv;
+    }
+    
+    
+    
     
 }

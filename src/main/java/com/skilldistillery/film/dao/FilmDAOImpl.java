@@ -609,6 +609,41 @@ public class FilmDAOImpl implements FilmDAO {
 		return result;
 
 	}
+	
+	public List<String> listInventoryItems(int filmID) throws SQLException{
+		List<String> inventoryItems = new ArrayList<>();
+		List<Integer> inventoryID = new ArrayList<>();
+		Connection conn = null;
+		try {
+			conn = DriverManager.getConnection(URL, user, password);
+			conn.setAutoCommit(false);
+			String sql = "SELECT id, media_condition FROM inventory_item WHERE film_id = ?";
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			stmt.setInt(1, filmID);
+			ResultSet results = stmt.executeQuery();
+			
+			if(results.next()) {
+				inventoryItems.add(results.getString("media_condition"));
+			}
+			
+			conn.commit();
+			conn.close();
+		} catch (SQLException sqle) {
+			sqle.printStackTrace();
+			if (conn != null) {
+				try {
+					conn.rollback();
+				} catch (SQLException sqle2) {
+					System.err.println("Error trying to rollback");
+				}
+			}
+			conn.close();
+			throw new RuntimeException("Error inserting film_actor ");
+		}
+		
+		return inventoryItems;
+
+	}
 
 	public PreparedStatement setUp(int id, Connection conn, String sql) throws SQLException {
 		PreparedStatement stmt = conn.prepareStatement(sql);
