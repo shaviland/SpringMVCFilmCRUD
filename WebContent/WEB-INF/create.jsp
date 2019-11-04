@@ -76,6 +76,9 @@
 		</div>
 		<form:errors path="rating" />
 		<br />
+		<form:errors path="specialFeatures" />
+		<br />
+		
 		<form:label path="specialFeatures">Special Features:</form:label>
 		<div>
 			<input type="checkbox" name="specialFeatures" value="Trailers">Trailers<br>

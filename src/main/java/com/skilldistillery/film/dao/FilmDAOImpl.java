@@ -289,7 +289,6 @@ public class FilmDAOImpl implements FilmDAO {
 		}
 	}
 
-
 	@Override
 	public boolean deleteFilmById(int filmId) {
 		boolean filmDeleted = false;
@@ -374,7 +373,7 @@ public class FilmDAOImpl implements FilmDAO {
 			conn.setAutoCommit(false);
 			String sql = "INSERT INTO actor (first_name, last_name) " + " VALUES (?, ?)";
 			PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-			
+
 			stmt.setString(1, actor.getFirstName());
 			stmt.setString(2, actor.getLastName());
 			int updateCount = stmt.executeUpdate();
@@ -404,10 +403,10 @@ public class FilmDAOImpl implements FilmDAO {
 			}
 			conn.close();
 			throw new RuntimeException("Error inserting actor " + actor);
-			
+
 		}
 	}
-	
+
 	@Override
 	public boolean deleteActorById(int actorId) {
 		boolean actorDeleted = false;
@@ -444,7 +443,7 @@ public class FilmDAOImpl implements FilmDAO {
 
 		return actorDeleted;
 	}
-	
+
 	@Override
 	public Actor updateActor(int actorId, Actor actor) {
 		Connection conn = null;
@@ -474,7 +473,7 @@ public class FilmDAOImpl implements FilmDAO {
 		}
 		return actor;
 	}
-	
+
 	@Override
 	public boolean addActorIntoFilm(int actorID, int filmID) throws SQLException {
 		Connection conn = null;
@@ -487,9 +486,9 @@ public class FilmDAOImpl implements FilmDAO {
 			PreparedStatement duplicateStmt = conn.prepareStatement(duplicateSql);
 			duplicateStmt.setInt(1, actorID);
 			ResultSet duplicateResults = duplicateStmt.executeQuery();
-			
-			while(duplicateResults.next()) {
-				if(filmID == duplicateResults.getInt("film_id")) {
+
+			while (duplicateResults.next()) {
+				if (filmID == duplicateResults.getInt("film_id")) {
 					duplicateStmt.close();
 					duplicateResults.close();
 					conn.close();
@@ -498,43 +497,37 @@ public class FilmDAOImpl implements FilmDAO {
 			}
 			duplicateStmt.close();
 			duplicateResults.close();
-			
+
 			String existingSql = "SELECT id FROM film WHERE id = ?";
 			PreparedStatement existingStmt = conn.prepareStatement(existingSql);
 			existingStmt.setInt(1, filmID);
 			ResultSet existingResults = existingStmt.executeQuery();
-			
-			if(existingResults.getFetchSize() == 0) {
-					existingStmt.close();
-					existingResults.close();
-					conn.close();
-					return true;
+
+			if (existingResults.next()) {
+
+				String sql = "INSERT INTO film_actor (actor_id, film_id) " + " VALUES (?, ?)";
+				PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+
+				stmt.setInt(1, actorID);
+				stmt.setInt(2, filmID);
+				int updateCount = stmt.executeUpdate();
+				System.out.println("Created " + updateCount + " new film_actor.");
+				if (updateCount == 1) {
+					ResultSet keys = stmt.getGeneratedKeys();
+					if (keys.next()) {
+						int newActorId = keys.getInt(1);
+						System.out.println("New film_actor: " + newActorId);
+						result = true;
+					}
+					keys.close();
+				} 
+				conn.commit();
+				existingStmt.close();
+				existingResults.close();
+				stmt.close();
+				conn.close();
+				return result;
 			}
-			existingStmt.close();
-			existingResults.close();
-			
-			String sql = "INSERT INTO film_actor (actor_id, film_id) " 
-			+ " VALUES (?, ?)";
-			PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-			
-			stmt.setInt(1, actorID);
-			stmt.setInt(2, filmID);
-			int updateCount = stmt.executeUpdate();
-			System.out.println("Created " + updateCount + " new film_actor.");
-			if (updateCount == 1) {
-				ResultSet keys = stmt.getGeneratedKeys();
-				if (keys.next()) {
-					int newActorId = keys.getInt(1);
-					System.out.println("New film_actor: " + newActorId);
-					result = true;
-				}
-				keys.close();
-			} else {
-			}
-			conn.commit();
-			stmt.close();
-			conn.close();
-			return result;
 		} catch (SQLException sqle) {
 			sqle.printStackTrace();
 			if (conn != null) {
@@ -546,8 +539,9 @@ public class FilmDAOImpl implements FilmDAO {
 			}
 			conn.close();
 			throw new RuntimeException("Error inserting film_actor ");
-			
 		}
+		
+		return result;
 	}
 
 	public PreparedStatement setUp(int id, Connection conn, String sql) throws SQLException {
