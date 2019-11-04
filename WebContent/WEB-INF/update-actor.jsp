@@ -19,6 +19,11 @@
 <title>Update Actor</title>
 </head>
 <body>
+	<div class="container">
+		<div id="banner" class="jumbotron text-center">
+			<h1>Update An Actor</h1>
+		</div>
+	</div>
 	<form:form action="updateActor.do" method="POST" modelAttribute="actor">
 		<form:label path="firstName">First Name:</form:label>
 		<form:input path="firstName" default = "${oldActor.firstName}" placeholder="${oldActor.firstName}" value="${oldActor.firstName}"/>
@@ -31,7 +36,7 @@
 		
 		<br />
 		<input type="hidden" name="actorID" value="${oldActor.id}" /> 
-		<input type="submit" value="Update Actor" />
+		<input type="submit" class="btn btn-outline-light" value="Update Actor" />
 		
 	</form:form>
 </body>

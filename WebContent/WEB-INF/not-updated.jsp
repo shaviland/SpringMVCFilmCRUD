@@ -24,7 +24,7 @@
 	
 		<form action="index.html" method="GET">
 
-		<input type="submit" value="Return to Home Page" />
+		<input type="submit" class="btn btn-outline-light" value="Return to Home Page" />
 	</form>
 </body>
 </html>

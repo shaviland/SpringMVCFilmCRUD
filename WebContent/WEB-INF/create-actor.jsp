@@ -19,6 +19,11 @@
 <title>Create Actor</title>
 </head>
 <body>
+	<div class="container">
+		<div id="banner" class="jumbotron text-center">
+			<h1>Actor Creation</h1>
+		</div>
+	</div>
 	<form:form action="createdActor.do" method="POST" modelAttribute="actor">
 		<form:label path="firstName">First Name:</form:label>
 		<form:input path="firstName" />
@@ -29,7 +34,7 @@
 		<form:errors path="lastName" />
 		<br />
 		<div class="container">
-		<input type="submit" id = "createActor" class="btn btn-outline-dark" value="Create Actor" />
+		<input type="submit" id = "createActor"  class="btn btn-outline-light" value="Create Actor" />
 		</div>
 	</form:form>
 </body>

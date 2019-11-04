@@ -56,14 +56,14 @@
 
 	<form action="deleteFilm.do" method="GET">
 		<input type="hidden" name="filmID" value="${oldFilmID}" /> 
-		<input type="submit" value="DELETE FILM" />
+		<input type="submit" class="btn btn-outline-light" value="DELETE FILM" />
 	</form>
 	<form action="goToUpdateFilm.do" method="GET">
 		<input type="hidden" name="filmID" value="${oldFilmID}" /> 
-		<input type="submit" value="UPDATE FILM" />
+		<input type="submit" class="btn btn-outline-light" value="UPDATE FILM" />
 	</form>
 	<form action="index.html" method="GET">
-		<input type="submit" value="Return to Home Page" />
+		<input type="submit" class="btn btn-outline-light" value="Return to Home Page" />
 	</form>
 </body>
 </html>

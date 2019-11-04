@@ -19,6 +19,11 @@
 <title>Create Film</title>
 </head>
 <body>
+	<div class="container">
+		<div id="banner" class="jumbotron text-center">
+			<h1>Film Creation</h1>
+		</div>
+	</div>
 	<form:form action="createdFilm.do" method="POST" modelAttribute="film">
 		<form:label path="title">Title:</form:label>
 		<form:input path="title" />
@@ -89,7 +94,7 @@
 		<form:errors path="specialFeatures" />
 		<br />
 		
-		<input type="submit" value="Create Film" />
+		<input type="submit" class="btn btn-outline-light" value="Create Film" />
 	</form:form>
 </body>
 </html>
