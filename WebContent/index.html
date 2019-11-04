@@ -25,7 +25,7 @@
 			<div class="col-sm-4">
 				<form action="getFilmByID.do" method="GET">
 					<p>Look up film by ID</p>
-					<input type="number" required value = "" name="filmID" placeholder="Enter film ID"
+					<input type="number" required value = "" min="1" name="filmID" placeholder="Enter film ID"
 						 /> <input type="submit" value="Search" />
 				</form>
 			</div>
@@ -40,7 +40,7 @@
 			<div class="col-sm-4">
 				<form action="getActorByID.do" method="GET">
 					<p>Look up actor by ID</p>
-					<input type="number" name="actorID" placeholder="Enter actor ID"
+					<input type="number" name="actorID" min="1" placeholder="Enter actor ID"
 						required value = "" /> <input type="submit" value="Search" />
 				</form>
 			</div>

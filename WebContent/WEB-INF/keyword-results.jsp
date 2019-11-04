@@ -37,7 +37,7 @@
 	</c:forEach>
 	<form action="getFilmByID.do" method="GET">
 		<p>Search Film Details by ID</p>
-		<input type="number" name="filmID" required value = "" placeholder="Enter film ID" /> <input
+		<input type="number" name="filmID" min="1" required value = "" placeholder="Enter film ID" /> <input
 			type="submit" class="btn btn-outline-light" value="Search" />
 	</form>
 	<form action="index.html" method="GET">
