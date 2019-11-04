@@ -616,16 +616,25 @@ public class FilmDAOImpl implements FilmDAO {
 		try {
 			conn = DriverManager.getConnection(URL, user, password);
 			conn.setAutoCommit(false);
-			String sql = "SELECT id, media_condition FROM inventory_item WHERE film_id = ?";
+			String sql = "SELECT inventory_item.id, inventory_item.media_condition FROM inventory_item WHERE inventory_item.film_id = ?";
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, filmID);
 			ResultSet results = stmt.executeQuery();
 			
-			if(results.next()) {
+			while(results.next()) {
 				
 				copies.put(results.getInt("id"), results.getString("media_condition"));
 				
 			}
+			
+			List<Integer> keys = new ArrayList<>();
+			keys.addAll(copies.keySet());
+			
+			for(int key : keys) {
+				
+				System.out.println(copies.get(key));
+			}
+			
 			
 			
 			conn.commit();
