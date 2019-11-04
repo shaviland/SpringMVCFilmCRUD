@@ -70,7 +70,7 @@ public class FilmController {
     public ModelAndView deleteFilm(int filmID) {
         ModelAndView mv = new ModelAndView();
         if (!filmDAO.deleteFilmById(filmID) == true) {
-            mv.setViewName("WEB-INF/deleted.jsp");
+            mv.setViewName("WEB-INF/deleted-film.jsp");
         } else {
             mv.setViewName("notDeleted.do");
         }
@@ -81,7 +81,7 @@ public class FilmController {
     public ModelAndView deleteActor(int actorID) {
     	ModelAndView mv = new ModelAndView();
     	if (!filmDAO.deleteActorById(actorID) == true) {
-    		mv.setViewName("WEB-INF/deleted.jsp");
+    		mv.setViewName("WEB-INF/deleted-actor.jsp");
     	} else {
     		mv.setViewName("notDeleted.do");
     	}
@@ -108,7 +108,7 @@ public class FilmController {
         Actor actor = filmDAO.findActorById(actorID);
         ModelAndView mv = new ModelAndView();
         if (actor == null) {
-            mv.setViewName("notFound.do");
+            mv.setViewName("WEB-INF/not-found-actor.jsp");
             return mv;
         }
         System.out.println(actor);

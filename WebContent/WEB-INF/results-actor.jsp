@@ -41,11 +41,13 @@
 	</form>
 	<form action="addActorToFilm.do" method="GET">
 		<input type="hidden" name="actorID" value="${actor.id}" /> 
-		<input type="number" default = "0" name="filmID" />
+		<input type="number" name="filmID" />
 		<input type="submit" value="Add Actor to Film: (Enter Film ID)" />
 	</form>
+	<div class="container">
 	<form action="index.html" method="GET">
-		<input type="submit" value="Return to Home Page" />
+		<input type="submit" class="btn btn-outline-dark" value="Return to Home Page" />
 	</form>
+	</div>
 </body>
 </html>

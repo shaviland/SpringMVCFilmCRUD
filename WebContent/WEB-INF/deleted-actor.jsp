@@ -16,10 +16,10 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <link href="/css/style.css" rel="stylesheet" type="text/css">
-<title>Actor Update Results</title>
+<title>Delete Results</title>
 </head>
 <body>
-	<h3>ERROR: Actor unable to update</h3>
+	<h3>ACTOR HAS BEEN DELETED</h3>
 	
 		<form action="index.html" method="GET">
 
