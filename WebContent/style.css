@@ -1,28 +1,20 @@
 @charset "UTF-8";
 
 body {
-	background-color: #1f1b1b;
-	color:#b5b3b3;
+	background-color: #60a2c7;
+	color: #b5b3b3;
 }
-
 
 .jumbotron {
 	background-color: #4f0000;
 	color: #b5b3b3;
 	text-shadow: 2px 2px #ff0000;
-	
-
 }
-.container{
-	padding
-	padding: 25px:
+
+#createFilm {
+	margin-bottom: 40%;
 }
 
 table {
 	border: 3px white;
 }
-
-#createFilm{
-	 padding-bottom: 10%;
-}
-

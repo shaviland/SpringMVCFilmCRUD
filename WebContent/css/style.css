@@ -10,11 +10,18 @@ body {
 	background-color: #4f0000;
 	color: #b5b3b3;
 	text-shadow: 2px 2px #ff0000;
+	font-family: fantasy;
 	
 .container{
 	background-color: gray;
 	color: gray; 
 }
+.col-sm-4.ml-left {
+	width: 20%;
+	margin-bottom: 30%;
+	padding-bottom: 50px;
+}
+
 
 table {
 	border: 3px white;
