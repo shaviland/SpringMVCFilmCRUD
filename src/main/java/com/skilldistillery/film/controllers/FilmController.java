@@ -180,7 +180,7 @@ public class FilmController {
     public ModelAndView updateActor(@Valid Actor actor, int actorID, int filmID) throws SQLException {
     	ModelAndView mv = new ModelAndView();
     	boolean result = filmDAO.addActorIntoFilm(actorID, filmID);
-    	if (result) {
+    	if (!result) {
     		mv.setViewName("WEB-INF/actor-added-to-film-result.jsp");
     	} else {
     		mv.setViewName("WEB-INF/actor-not-added-to-film-result.jsp");
