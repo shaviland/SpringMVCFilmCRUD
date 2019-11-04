@@ -38,10 +38,10 @@
 	<form action="getFilmByID.do" method="GET">
 		<p>Search Film Details by ID</p>
 		<input type="number" name="filmID" required value = "" placeholder="Enter film ID" /> <input
-			type="submit" value="Search" />
+			type="submit" class="btn btn-outline-light" value="Search" />
 	</form>
 	<form action="index.html" method="GET">
-		<input type="submit" value="Return to Home Page" />
+		<input type="submit" class="btn btn-outline-light" value="Return to Home Page" />
 	</form>
 </body>
 </html>

@@ -19,6 +19,11 @@
 <title>Update Film</title>
 </head>
 <body>
+	<div class="container">
+		<div id="banner" class="jumbotron text-center">
+			<h1>Update A Film</h1>
+		</div>
+	</div>
 	<form:form action="updateFilm.do" method="POST" modelAttribute="film">
 		<form:label path="title">Title:</form:label>
 		<form:input path="title" default = "${oldFilm.title}" placeholder="${oldFilm.title}" value="${oldFilm.title }"/>
@@ -89,7 +94,7 @@
 		<form:errors path="specialFeatures" />
 		<br />
 		<input type="hidden" name="filmID" value="${oldFilm.id}" /> 
-		<input type="submit" value="Update Film" />
+		<input type="submit" class="btn btn-outline-light" value="Update Film" />
 		
 	</form:form>
 </body>
