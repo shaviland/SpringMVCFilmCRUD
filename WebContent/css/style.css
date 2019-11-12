@@ -1,28 +1,56 @@
 @charset "UTF-8";
 
 body {
-	background-color: #1f1b1b;
-	color:#b5b3b3;
+	background: linear-gradient(to bottom, rgba(22, 22, 22, 0.3) 20%,
+		rgba(22, 22, 22, 0.7) 75%, #161616 100%),
+		url("../images/maxresdefault.jpg");
+	color: #b5b3b3;
+	text-shadow : 2px 2px #000000;
+	margin-top: 5%;
+	margin-left: 10%;
+	margin-right: 10%;
+	margin-bottom: 15%;
+	text-shadow: 2px 2px #000000;
 }
-
 
 .jumbotron {
-	background-color: #4f0000;
-	color: #b5b3b3;
-	text-shadow: 2px 2px #160503;
+	/* background: #4f0000 */
+	opacity: 0.3; filter : alpha( opacity = 75); color : #b5b3b3;
+	text-shadow : 2px 2px #160503; font-family : fantasy;
+	color: gray;
 	font-family: fantasy;
-	
-.container{
-	background-color: gray;
-	color: gray; 
+	text-shadow: 2px 2px #160503;
+	filter: alpha(opacity = 75);
+	color: #b5b3b3;
 }
-.col-sm-4.ml-left {
+
+.btn {
+	margin-left: 20px;
+	margin-right: 20px;
+	margin-top: 15px;
+}
+
+.btn#createFilm {
+	align-content: center;
+	background-color: gray;
+}
+
+#create-film {
 	width: 20%;
 	margin-bottom: 30%;
 	padding-bottom: 50px;
+	float: left:
 }
 
+#create-actor {
+	float: right;
+}
 
 table {
 	border: 3px white;
+}
+
+
+form {
+	margin-bottom: 5%;
 }

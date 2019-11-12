@@ -15,8 +15,8 @@
 <title>Home</title>
 </head>
 <body>
-	<div class="container">
-		<div id="banner" class="jumbotron text-center">
+	<div class="container" id="banner">
+		<div class="jumbotron text-center">
 			<h1>Welcome to the Film Database</h1>
 		</div>
 	</div>
@@ -25,14 +25,15 @@
 			<div class="col-sm-4 ml-left">
 				<form action="getFilmByID.do" method="GET">
 					<p>Film Search by ID</p>
-					<input type="number" required value = "" min="1" name="filmID" placeholder="Enter film ID"
-						 /> <input type="submit" value="Search" />
+					<input type="number" required value="" min="1" name="filmID"
+						placeholder="Enter film ID" /> <input type="submit"
+						value="Search" />
 				</form>
 			</div>
 			<div class="col-sm-4 ml-center">
 				<form action="findFilmByKeyword.do" method="GET">
 					<p>Film Search by Keyword</p>
-					<input type="text" name="filmKey" required value = ""
+					<input type="text" name="filmKey" required value=""
 						placeholder="Enter Keyword" /> <input type="submit"
 						value="Search" />
 				</form>
@@ -40,23 +41,21 @@
 			<div class="col-sm-4 ml-right">
 				<form action="getActorByID.do" method="GET">
 					<p>Actor Search by ID</p>
-					<input type="number" name="actorID" min="1" placeholder="Enter actor ID"
-						required value = "" /> <input type="submit" value="Search" />
+					<input type="number" name="actorID" min="1"
+						placeholder="Enter actor ID" required value="" /> <input
+						type="submit" value="Search" />
 				</form>
 			</div>
 		</div>
 	</div>
-	<div class="container">
-			<div id="createFilm" class="col-sm-4 ml-left">
-				<form action="createFilm.do" method=GET>
-					<input type="submit" class="btn btn-outline-light" value="Create a new film" />
-				</form>
-			</div>
-			<div id="createActor" class="col-sm-4 ml-left">
-				<form action="createActor.do" method=GET>
-					<input type="submit" class="btn btn-outline-light" value="Create a new actor" />
-				</form>
-			</div>
-		</div>
+		<form action="createFilm.do" method=GET>
+			<input type="submit" class="btn btn-outline-light"
+				value="Create a new film" />
+		</form>
+
+		<form action="createActor.do" method=GET>
+			<input type="submit" class="btn btn-outline-light"
+				value="Create a new actor" />
+		</form>
 </body>
 </html>
